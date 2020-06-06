@@ -6,7 +6,7 @@ $(function () {
         $('.header__logohover').removeClass('show');
     });
 
-    // header__menu-item-notSelected
+    
     $('.header__menu-item').on('click', function () {
 
         if ( !$(this).hasClass('header__menu-item-selected') ) {
@@ -27,7 +27,16 @@ $(function () {
 
         }
 
+    });
+    let burger = $('.header__burger');
+    let headerMenu = $('.header__menu');
+    let body = $('body');
 
+
+    burger.on('click', function(){
+        burger.toggleClass('active');
+        headerMenu.toggleClass('active');
+        body.toggleClass('lock');
     })
 
 
