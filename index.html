@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SolidCompas</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery.SegmentSlider.css">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -48,7 +49,7 @@
                     <div class="header__menu-inner">
                         <a class="header__menu-item header__menu-item-selected" href="#home">Главная</a>
                         <a class="header__menu-item header__menu-item-notSelected" href="#about">Обо мне</a>
-                        <a class="header__menu-item header__menu-item-notSelected" href="#postrfolio">Портфолио</a>
+                        <a class="header__menu-item header__menu-item-notSelected" href="#portfolio">Портфолио</a>
                         <a class="header__menu-item header__menu-item-notSelected" href="#calculate">Заказать</a>
                         <a class="header__menu-item header__menu-item-notSelected" href="#contacts">Контакты</a>
                     </div>
@@ -76,9 +77,8 @@
     </header>
 
     <section class="content">
+
         <section class="home">
-
-
             <div class="home__titlebox">
                 <div class="home__titlebox-inner">
                     <h1 class="home__titlebox-title">
@@ -104,7 +104,356 @@
 
         </section>
 
-        <section class="portfolio">
+        <section class="about" id="about">
+
+        </section>
+
+
+        <section class="portfolio" id="portfolio">
+
+            <div class="portfolio__title">портфолио</div>
+
+            <nav class="portfolio__menu">
+                <div class="portfolio__menu-item active">
+                    все
+                    <div class="blockr1"></div>
+                    <div class="blockr2"></div>
+                </div>
+                <div class="portfolio__menu-item">
+                    Уличные зонты
+                    <div class="blockl1"></div>
+                    <div class="blockl2"></div>
+                    <div class="blockl3"></div>
+                    <div class="blockr1"></div>
+                    <div class="blockr2"></div>
+                </div>
+                <div class="portfolio__menu-item">
+                    Складское оборудование
+                    <div class="blockl1"></div>
+                    <div class="blockl2"></div>
+                    <div class="blockl3"></div>
+                    <div class="blockr1"></div>
+                    <div class="blockr2"></div>
+                </div>
+                <div class="portfolio__menu-item">
+                    Оборудование для уличной торговли
+                    <div class="blockl1"></div>
+                    <div class="blockl2"></div>
+                    <div class="blockl3"></div>
+                    <div class="blockr1"></div>
+                    <div class="blockr2"></div>
+                </div>
+                <div class="portfolio__menu-item">
+                    Рендеринг
+                    <div class="blockl1"></div>
+                    <div class="blockl2"></div>
+                    <div class="blockl3"></div>
+                </div>
+
+            </nav>
+
+            <div class="portfolio__items">
+
+                <!-- category0 - все -->
+                <!-- category1 - зонты -->
+                <!-- category2 - склад -->
+                <!-- category3 - торговля -->
+                <!-- category4 - рендер -->
+
+                <!-- Стол-скамья со складным зонтом-->
+                <div class="portfolio__item category0 category1 category4" id="pi0">
+                    <img src="img/prtf/0p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Стол-скамья со складным зонтом</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Стол-скамья со складным зонтом-->
+                <div class="portfolio__item category0 category1 category4" id="pi1">
+                    <img src="img/prtf/1p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Стол-скамья со складным зонтом</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Уличный рычажный зонт-->
+                <div class="portfolio__item category0 category1" id="pi17">
+                    <img src="img/prtf/17p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Уличный рычажный 4-х лучевой зонт</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Уличный рычажный зонт-->
+                <div class="portfolio__item category0 category1" id="pi18">
+                    <img src="img/prtf/18p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Уличный рычажный 6-ти лучевой зонт</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Уличный телескопический 4-х лучевой зонт-->
+                <div class="portfolio__item category0 category1" id="pi19">
+                    <img src="img/prtf/19p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Уличный телескопический 4-х лучевой зонт</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Уличный телескопический 6-ти лучевой зонт-->
+                <div class="portfolio__item category0 category1" id="pi20">
+                    <img src="img/prtf/20p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Уличный телескопический 6-ти лучевой зонт</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Уличный телескопический 8-ми лучевой зонт-->
+                <div class="portfolio__item category0 category1" id="pi21">
+                    <img src="img/prtf/21p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Уличный телескопический 8-ми лучевой зонт</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Тележка для уличной торговли с зонтом -->
+                <div class="portfolio__item category0 category3 category4" id="pi2">
+                    <img src="img/prtf/2p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Тележка для уличной торговли с зонтом</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Антивандальный сейф для морозильной камеры -->
+                <div class="portfolio__item category0 category3 category4" id="pi22">
+                    <img src="img/prtf/22p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Антивандальный сейф для морозильной камеры</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Тележка для торговли пивом -->
+                <div class="portfolio__item category0 category3" id="pi23">
+                    <img src="img/prtf/23p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Тележка для торговли пивом</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Тележка для торговли пивом -->
+                <div class="portfolio__item category0 category3" id="pi24">
+                    <img src="img/prtf/24p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Тележка для торговли пивом</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Мобильный сортировочный шкаф -->
+                <div class="portfolio__item category0 category2" id="pi3">
+                    <img src="img/prtf/3p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Мобильный сортировочный шкаф</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Тематическая парковая арка "9 мая" -->
+                <div class="portfolio__item category0 category4" id="pi4">
+                    <img src="img/prtf/4p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Тематическая парковая арка "9 мая"</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Праздничная светодиодная консоль -->
+                <div class="portfolio__item category0 category4" id="pi5">
+                    <img src="img/prtf/5p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Праздничная светодиодная консоль</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Тематическая парковая арка "9 мая" -->
+                <div class="portfolio__item category0 category4" id="pi6">
+                    <img src="img/prtf/6p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Тематическая парковая арка "9 мая"</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Флаговая композиция -->
+                <div class="portfolio__item category0 category4" id="pi7">
+                    <img src="img/prtf/7p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Флаговая композиция</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Флаговая композиция -->
+                <div class="portfolio__item category0 category4" id="pi8">
+                    <img src="img/prtf/8p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Флаговая композиция</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Светодиодная фотозона -->
+                <div class="portfolio__item category0 category4" id="pi9">
+                    <img src="img/prtf/9p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Светодиодная фотозона</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Праздничная арка -->
+                <div class="portfolio__item category0 category4" id="pi10">
+                    <img src="img/prtf/10p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Праздничная арка</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Светодиодная арка -->
+                <div class="portfolio__item category0 category4" id="pi11">
+                    <img src="img/prtf/11p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Светодиодная арка</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Светодиодная фотозона -->
+                <div class="portfolio__item category0 category4" id="pi12">
+                    <img src="img/prtf/12p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Светодиодная фотозона</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Светодиодная фотозона -->
+                <div class="portfolio__item category0 category4" id="pi13">
+                    <img src="img/prtf/13p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Светодиодная фотозона</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Светодиодная фотозона -->
+                <div class="portfolio__item category0 category4" id="pi14">
+                    <img src="img/prtf/14p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Светодиодная фотозона</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Флаговая композиция -->
+                <div class="portfolio__item category0 category4" id="pi15">
+                    <img src="img/prtf/15p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Флаговая композиция</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Праздничная консоль -->
+                <div class="portfolio__item category0 category4" id="pi16">
+                    <img src="img/prtf/16p.jpg" alt="">
+                    <div class="portfolio__item-hover">
+                        <div class="portfolio__item-hover-title">Праздничная консоль</div>
+                        <div class="portfolio__item-hover-button">
+                            <div class="portfolio__item-hover-button-inner"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="portfolio__modal">
+                <!-- <div class="" id="modal-slider-new"></div> -->
+                <div id="pms0" class="portfolio__modal-modal-slider">
+                    <img src="img/prtf/0/0.jpg" alt="">
+                    <img src="img/prtf/0/1.jpg" alt="">
+                    <img src="img/prtf/0/2.jpg" alt="">
+                    <img src="img/prtf/0/3.jpg" alt="">
+                </div>
+                <div id="pms1" class="portfolio__modal-modal-slider">
+                    <img src="img/prtf/1/0.jpg" alt="">
+                    <img src="img/prtf/1/1.jpg" alt="">
+                    <img src="img/prtf/1/2.jpg" alt="">
+                </div>
+                <div class="portfolio__modal-close"></div>
+            </div>
 
         </section>
 
@@ -115,6 +464,7 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/jquery.SegmentSlider.js"></script>
     <script src="js/main.js"></script>
 </body>
 
