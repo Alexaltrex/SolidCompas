@@ -10,34 +10,35 @@ $(function () {
         $('.header__logohover').removeClass('show');
     });
 
-    // МЕНЮ HEADER
+    /////////////////////////////////
+    ////////// МЕНЮ HEADER //////////
+    /////////////////////////////////
     $('.header__menu-item').on('click', function () {
 
         if (!$(this).hasClass('header__menu-item-selected')) {
             let indexSelect = $('.header__menu-item').index($(this));
 
             $('.header__menu-item').each((index, item) => {
-                    if (index === indexSelect) {
-                        $(item).addClass('header__menu-item-selected');
-                        $(item).removeClass('header__menu-item-notSelected');
-                    } else if ($(item).addClass('header__menu-item-selected')) {
-                        $(item).removeClass('header__menu-item-selected');
-                        $(item).addClass('header__menu-item-notSelected');
-                    }
+                if (index === indexSelect) {
+                    $(item).addClass('header__menu-item-selected');
+                    $(item).removeClass('header__menu-item-notSelected');
+                } else if ($(item).addClass('header__menu-item-selected')) {
+                    $(item).removeClass('header__menu-item-selected');
+                    $(item).addClass('header__menu-item-notSelected');
                 }
-
-            );
-
+            });
         }
 
+        burger.toggleClass('active');
+        headerMenu.toggleClass('active');
     });
 
-
-    // БУРГЕР_МЕНЮ
+    /////////////////////////
+    /////// БУРГЕР МЕНЮ /////
+    /////////////////////////
     let burger = $('.header__burger');
     let headerMenu = $('.header__menu');
     let body = $('body');
-
 
     burger.on('click', function () {
         burger.toggleClass('active');
@@ -45,7 +46,25 @@ $(function () {
         body.toggleClass('lock');
     });
 
-    // СЛАЙДЕР
+    ///////////////////////////////
+    ////////// JUMP-TOP ///////////
+    ///////////////////////////////
+    $('.jump-top').on('click', () => {
+        window.scrollTo(0, 0);
+    });
+
+    $(window).on('scroll', function () {
+        if (pageYOffset > 0) {
+            $('.jump-top').css('display', 'block');
+        } else {
+            $('.jump-top').css('display', 'none');
+        }
+    });
+
+
+    /////////////////////////////////
+    ///////// СЛАЙДЕР HOME //////////
+    /////////////////////////////////
     let items = document.querySelectorAll('.home__slider-item');
 
     for (let i = 0; i < items.length; i++) {
@@ -155,6 +174,19 @@ $(function () {
 
             iActive = i;
         }
+    });
+
+    ///////////////////////////////////
+    /////// БУРГЕР МЕНЮ ПОРТФОЛИО /////
+    ///////////////////////////////////
+    let portfolioBurger = $('.portfolio__burger');
+    let portfolioMenu = $('.portfolio__menu');
+    
+
+    portfolioBurger.on('click', function () {
+        portfolioBurger.toggleClass('active');
+        //headerMenu.toggleClass('active');
+        
     });
 
 
