@@ -1,4 +1,7 @@
 $(function () {
+    function cl(p) {
+        console.log(p);
+    }
 
     /////////////////////
     /////// ЛОГОТИП /////
@@ -51,6 +54,17 @@ $(function () {
     ///////////////////////////////
     $('.jump-top').on('click', () => {
         window.scrollTo(0, 0);
+        // первоначальная стилизация элементов меню
+        $('.header__menu-item').each((index, item) => {
+            if (index == 0) {
+                $(item).addClass('header__menu-item-selected');
+                $(item).removeClass('header__menu-item-notSelected');
+            } else {
+                $(item).removeClass('header__menu-item-selected');
+                $(item).addClass('header__menu-item-notSelected');
+            }
+        });
+
     });
 
     $(window).on('scroll', function () {
@@ -122,7 +136,16 @@ $(function () {
 
     portfolioItems.css('height', `${Math.ceil(Items0.length / 4) * 210}px`);
 
+    console.log();
+
     menuItems.on('click', function () {
+        // сворачивать меню и анимировать значок бурег
+        // но, только если в соотв. диапазоне размера экрана
+        if (parseInt($('.portfolio').css('width')) < 900) {
+            portfolioBurger.toggleClass('active');
+            portfolioMenu.toggleClass('active');
+        }
+
         let i = menuItems.index($(this)); // номер НОВОЙ категории 
         if (i !== iActive) {
             $(this).addClass('active');
@@ -181,13 +204,20 @@ $(function () {
     ///////////////////////////////////
     let portfolioBurger = $('.portfolio__burger');
     let portfolioMenu = $('.portfolio__menu');
-    
+    let portfolioMenuInner = $('.portfolio__menu-inner');
+
 
     portfolioBurger.on('click', function () {
+        let portfolioMenuInnerHeight = portfolioMenuInner.css('height');
+        let portfolioMenuHeight = portfolioMenu.css('height');
+        console.log(portfolioMenuHeight);
         portfolioBurger.toggleClass('active');
-        //headerMenu.toggleClass('active');
-        
+        portfolioMenu.toggleClass('active');
+        let height = parseInt(portfolioMenuHeight) ? 0 : portfolioMenuInnerHeight;
+        //portfolioMenu.css('height', height);
     });
+
+
 
 
     ///////////////////////////////
@@ -198,51 +228,88 @@ $(function () {
     let sliderNew;
     $('.portfolio__item-hover-button').on('click', function () {
 
-        // создать новый слайдер
+        // id выбранного блока 
         id = $(this).parent().parent().attr('id').match(/\d+/g);
+
         $('.portfolio__modal').append('<div class="" id="modalSliderNew"></div>');
         sliderNew = $('#modalSliderNew');
+        // копирование картинок в слайдер
         $(`#pms${id} img`).each((index, elem) => {
             sliderNew.append(`<img src="img/prtf/${id}/${index}.jpg" alt="">`)
         });
-        sliderNew.SegmentSlider({
-            segments: 8, // quantity of segments, default is 8  
-            lineDur: 3000, //duration of line-time animation (ms), default is 5000
-            segmentDur: 500, //duration of toggle segment animation (ms), default is 2000
-            //segmentPhase: 125, // interval of time (ms) from start inimation of a segment before start animation of next segment 
-            linePosition: 'bottom', // position of line-time: 'bottom' or 'top', default is 'bottom'
-            lineHeight: '5px', // height of line-time (px, em, rem, %), default is '5px';
-            lineColor: 'red', // color of line-time, default is 'red'
-            lineOpacity: 1 // opacity of line-time, default is .5
-        });
 
-        $('.portfolio__modal').addClass('active');
+        if ($(`#pms${id} img`).length == 1) {
+            $(`#modalSliderNew img`).addClass('only');
+        }
+
+        // если изображений несколько - создать слайдер
+        if ($(`#pms${id} img`).length > 1) {
+            // создать слайдер
+            sliderNew.SegmentSlider({
+                segments: 8, // quantity of segments, default is 8  
+                lineDur: 3000, //duration of line-time animation (ms), default is 5000
+                segmentDur: 500, //duration of toggle segment animation (ms), default is 2000
+                //segmentPhase: 125, // interval of time (ms) from start inimation of a segment before start animation of next segment 
+                linePosition: 'bottom', // position of line-time: 'bottom' or 'top', default is 'bottom'
+                lineHeight: '5px', // height of line-time (px, em, rem, %), default is '5px';
+                lineColor: 'red', // color of line-time, default is 'red'
+                lineOpacity: 1 // opacity of line-time, default is .5
+            });
+        }
+
+        body.toggleClass('lock');
         $('.portfolio__modal').animate({
             'left': '0'
-        }, 500);
+        }, 400);
         $('#modalSliderNew').addClass('active');
-        body.toggleClass('lock');
 
     });
+    //////////////////////////////
+    ///// модальное окно для ABOUT
+    //////////////////////////////
+    let id_about_img;
+    $('.about__achievements-item').on('click', function () {
+        id_about_img = $(this).attr('id').match(/\d+/g)[0];
+        //console.log(id_about_img);
+
+        $('.portfolio__modal').append('<div class="" id="modalSliderNew"></div>');
+        sliderNew = $('#modalSliderNew');
+        sliderNew.append(`<img class='only' src="img/about/${id_about_img}.jpg" alt="">`)
+
+        body.toggleClass('lock');
+        $('.portfolio__modal').animate({
+            'left': '0'
+        }, 400);
+        $('#modalSliderNew').addClass('active');
+    });
+
 
     // закрыть окно
     $('.portfolio__modal-close').on('click', function () {
+        if (sliderNew) {
+            sliderNew.removeClass('active');
+        }
 
-        sliderNew.removeClass('active');
         $('.portfolio__modal').animate({
             'left': '-100%'
         }, 500, function () {
+            if (sliderNew) {
+                sliderNew.remove();
+            }
             $('.segment-slider-wrapper-outer').remove();
             body.toggleClass('lock');
         });
 
     });
 
-    ////////////////////////////////////////////////
-    ///// АДАПТИВНОСТЬ БЛОКА portfolio__items //////
-    ////////////////////////////////////////////////
-    // расставляет item в соответствии с шириной экрана
+    ////////////////////////////////////////////////////
+    /////////////// АДАПТИВНОСТЬ ///////////////////////
+    ////////////////////////////////////////////////////
     function adaptive() {
+        ////////////////////////////////////////////////
+        ///// АДАПТИВНОСТЬ БЛОКА portfolio__items //////
+        ////////////////////////////////////////////////
+        // расставляет item в соответствии с шириной экрана
         // ширина блока portfolioItems
         let itemsWidth = parseInt(portfolioItems.css('width'));
 
@@ -284,6 +351,28 @@ $(function () {
             $(elem).css('left', `calc(${nX * 100/itemInRow}% + ${margin}px`);
             $(elem).css('top', `${nY * 200 + (2 * (nY + 1) - 1) * 5}px`);
         });
+
+        /////////////////////////////////////////
+        //////// адаптив блока ABOUT ////////////                   
+        /////////////////////////////////////////
+        let aboutDescriptionHeight = $('.about__description').innerHeight();
+        let headerHeight = $('.header').innerHeight();
+        let windowHeight = $(document).height();
+        let otherHeight = windowHeight - headerHeight; //высота окна без header
+
+        console.log(`aboutDescriptionHeight = ${aboutDescriptionHeight}`);
+        console.log(`headerHeight = ${headerHeight}`);
+        console.log(`windowHeight = ${windowHeight}`);
+        console.log(``);
+
+        if (aboutDescriptionHeight > otherHeight) {
+            $('.about').addClass('adaptive');
+            $('.about__description').addClass('adaptive');
+        } else {
+            $('.about').removeClass('adaptive');
+            $('.about__description').removeClass('adaptive');
+        }
+
     }
 
     let itemInRow; // количество item в ряду
@@ -294,5 +383,32 @@ $(function () {
 
     // адаптация при резайзе
     $(window).resize(adaptive);
+
+    let xStart;
+    let countStep = 0,
+        countStepNext;
+    //let x0 = $('.img-wrapper').offset().left;
+    $('.img-wrapper img').eq(countStep).css('opacity', '1')
+
+    $('.img-wrapper').on('mouseenter', function (e) {
+        xStart = e.pageX;
+        cl(xStart);
+    });
+
+    $('.img-wrapper').on('mousemove', function (e) {
+        let x = e.pageX; // текущее положение мыши
+        let step = 600 / 36;
+        let countStepNext = Math.floor((x - xStart) / step);
+        cl(countStep);
+
+        if (countStepNext > 0 && countStepNext !== countStep) {
+            $('.img-wrapper img').eq(countStep).css('opacity', '0');
+            $('.img-wrapper img').eq(countStepNext).css('opacity', '1');
+            countStep = countStepNext;
+        }
+        //$('.img-wrapper img').css('opacity', '0');
+
+    });
+
 
 })
