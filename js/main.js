@@ -357,13 +357,13 @@ $(function () {
         /////////////////////////////////////////
         let aboutDescriptionHeight = $('.about__description').innerHeight();
         let headerHeight = $('.header').innerHeight();
-        let windowHeight = $(document).height();
+        let windowHeight = $(window).height();
         let otherHeight = windowHeight - headerHeight; //высота окна без header
 
-        console.log(`aboutDescriptionHeight = ${aboutDescriptionHeight}`);
-        console.log(`headerHeight = ${headerHeight}`);
-        console.log(`windowHeight = ${windowHeight}`);
-        console.log(``);
+        // console.log(`aboutDescriptionHeight = ${aboutDescriptionHeight}`);
+        // console.log(`headerHeight = ${headerHeight}`);
+        // console.log(`windowHeight = ${windowHeight}`);
+        // console.log(``);
 
         if (aboutDescriptionHeight > otherHeight) {
             $('.about').addClass('adaptive');
@@ -373,7 +373,49 @@ $(function () {
             $('.about__description').removeClass('adaptive');
         }
 
+        /////////////////////////////////////////
+        //////// адаптив блока SERVICES /////////                  
+        /////////////////////////////////////////
+
+        //let windowHeight = $(window).height();
+        if ($(window).innerWidth() >= 900) {
+            let servicesTitleHeight = $('.services__title').innerHeight();
+            $('.services__item-img').each(function (index, elem) {
+                let servicesItemTitleboxHeight = $('.services__item-titlebox').eq(index).innerHeight();
+                let servicesItemTextHeight = $('.services__item-text').eq(index).innerHeight();
+                let servicesItemImgHeight = (windowHeight - servicesTitleHeight - 30) / 2 - servicesItemTitleboxHeight - servicesItemTextHeight - 20;
+                $(elem).css('height', servicesItemImgHeight + 'px');
+            });
+        }
+        if ($(window).innerWidth() < 900) {
+            let servicesTitleHeight = $('.services__title').innerHeight();
+            $('.services__item-img').each(function (index, elem) {
+                let servicesItemTitleboxHeight = $('.services__item-titlebox').eq(index).innerHeight();
+                let servicesItemTextHeight = $('.services__item-text').eq(index).innerHeight();
+                let servicesItemImgHeight = (windowHeight - servicesTitleHeight - 30) / 2 - servicesItemTitleboxHeight - servicesItemTextHeight - 20;
+                $(elem).css('height', 'auto');
+            });
+        }
+
+
     }
+
+    // блок services
+    let windowHeight = $(window).height();
+    cl(windowHeight);
+    let servicesTitleHeight = $('.services__title').innerHeight();
+    cl(servicesTitleHeight);
+    $('.services__item-img').each(function (index, elem) {
+        let servicesItemTitleboxHeight = $('.services__item-titlebox').eq(index).innerHeight();
+        let servicesItemTextHeight = $('.services__item-text').eq(index).innerHeight();
+        //cl(servicesItemTextHeight);
+        let servicesItemImgHeight = (windowHeight - servicesTitleHeight - 30) / 2 - servicesItemTitleboxHeight - servicesItemTextHeight - 20;
+        cl(servicesItemImgHeight);
+        $(elem).css('height', servicesItemImgHeight + 'px');
+    });
+
+
+    ///////////////////////////////////////////////////
 
     let itemInRow; // количество item в ряду
     let margin; // первоначальное значение горизотального margin у item
@@ -384,11 +426,29 @@ $(function () {
     // адаптация при резайзе
     $(window).resize(adaptive);
 
+
+    ///////////////////////////////////////////////////
+    //////////// ПЕРВЫЙ СЛАЙДЕР SERVICES //////////////
+    ///////////////////////////////////////////////////
+    let servicesItemImg = $('.services__item-img.services__item-img0 img');
+    let servicesItemImgCount = 0;
+    servicesItemImg.css('opacity', '0');
+    servicesItemImg.eq(servicesItemImgCount).css('opacity', '1');
+    setInterval(function () {
+        let servicesItemImgCountNext = (servicesItemImgCount === 8) ? 0 : servicesItemImgCount + 1;
+        servicesItemImg.eq(servicesItemImgCount).css('opacity', '0');
+        servicesItemImg.eq(servicesItemImgCountNext).css('opacity', '1');
+        servicesItemImgCount = servicesItemImgCountNext;
+    }, 1000);
+
+    ///////////////////////////////////////////////////
+    //////////// ВТОРОЙ СЛАЙДЕР SERVICES //////////////
+    ///////////////////////////////////////////////////
+
     let xStart;
     let countStep = 0,
         countStepNext;
-    //let x0 = $('.img-wrapper').offset().left;
-    $('.img-wrapper img').eq(countStep).css('opacity', '1')
+    $('.services__item-img.services__item-img2 img').eq(countStep).css('opacity', '1')
 
     $('.img-wrapper').on('mouseenter', function (e) {
         xStart = e.pageX;
@@ -409,6 +469,43 @@ $(function () {
         //$('.img-wrapper img').css('opacity', '0');
 
     });
+
+    ///////////////////////////////////////////////////
+    //////////// ЧЕТВЕРТЫЙ БЛОК SERVICES ///////////
+    ///////////////////////////////////////////////////
+    $('.services__item-img3').on('click', function () {
+
+        // id выбранного блока 
+        //id = $(this).parent().parent().attr('id').match(/\d+/g);
+
+        $('.portfolio__modal').append('<div class="" id="modalSliderNew"></div>');
+        sliderNew = $('#modalSliderNew');
+        // копирование картинок в слайдер
+        for (let i = 1; i <= 3; i++) {
+            sliderNew.append(`<img src="img/services/3/${i}.jpg" alt="">`)
+        }
+
+        // создать слайдер
+        sliderNew.SegmentSlider({
+            segments: 8, // quantity of segments, default is 8  
+            lineDur: 6000, //duration of line-time animation (ms), default is 5000
+            segmentDur: 500, //duration of toggle segment animation (ms), default is 2000
+            //segmentPhase: 125, // interval of time (ms) from start inimation of a segment before start animation of next segment 
+            linePosition: 'bottom', // position of line-time: 'bottom' or 'top', default is 'bottom'
+            lineHeight: '5px', // height of line-time (px, em, rem, %), default is '5px';
+            lineColor: 'red', // color of line-time, default is 'red'
+            lineOpacity: 1 // opacity of line-time, default is .5
+        });
+
+
+        body.toggleClass('lock');
+        $('.portfolio__modal').animate({
+            'left': '0'
+        }, 400);
+        $('#modalSliderNew').addClass('active');
+
+    });
+
 
 
 })
