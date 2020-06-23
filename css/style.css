@@ -887,6 +887,33 @@ body section.content section.about .about__description .about__description-inner
   margin: 0px 5px 10px;
 }
 
+body section.content section.about .about__description .about__description-inner .about__achievements .about__achievements-item.load {
+  position: relative;
+}
+
+body section.content section.about .about__description .about__description-inner .about__achievements .about__achievements-item.load:before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+}
+
+body section.content section.about .about__description .about__description-inner .about__achievements .about__achievements-item.load:after {
+  position: absolute;
+  content: url("../img/oval.svg");
+  display: block;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 11;
+}
+
 body section.content section.about .about__description .about__description-inner .about__achievements .about__achievements-item:hover img {
   -webkit-transform: scale(1.42);
           transform: scale(1.42);
@@ -1048,8 +1075,11 @@ body section.content section.services .services__items .services__items-inner .s
   max-height: 100%;
   max-width: 100%;
   display: block;
-  -webkit-transition: .3s;
-  transition: .3s;
+}
+
+body section.content section.services .services__items .services__items-inner .services__item .services__item-img.services__item-img0 img {
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
 body section.content section.services .services__items .services__items-inner .services__item .services__item-img.services__item-img3 {
@@ -1065,6 +1095,33 @@ body section.content section.services .services__items .services__items-inner .s
 body section.content section.services .services__items .services__items-inner .services__item .services__item-img.services__item-img3 img:hover {
   border: 3px solid black;
   cursor: pointer;
+}
+
+body section.content section.services .services__items .services__items-inner .services__item .services__item-img.services__item-img3.load {
+  position: relative;
+}
+
+body section.content section.services .services__items .services__items-inner .services__item .services__item-img.services__item-img3.load:before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+}
+
+body section.content section.services .services__items .services__items-inner .services__item .services__item-img.services__item-img3.load:after {
+  position: absolute;
+  content: url("../img/oval.svg");
+  display: block;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 11;
 }
 
 body section.content section.services .services__items .services__items-inner .services__item .services__item-img img {

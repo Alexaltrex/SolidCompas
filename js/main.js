@@ -136,8 +136,6 @@ $(function () {
 
     portfolioItems.css('height', `${Math.ceil(Items0.length / 4) * 210}px`);
 
-    console.log();
-
     menuItems.on('click', function () {
         // сворачивать меню и анимировать значок бурег
         // но, только если в соотв. диапазоне размера экрана
@@ -210,14 +208,11 @@ $(function () {
     portfolioBurger.on('click', function () {
         let portfolioMenuInnerHeight = portfolioMenuInner.css('height');
         let portfolioMenuHeight = portfolioMenu.css('height');
-        console.log(portfolioMenuHeight);
         portfolioBurger.toggleClass('active');
         portfolioMenu.toggleClass('active');
         let height = parseInt(portfolioMenuHeight) ? 0 : portfolioMenuInnerHeight;
         //portfolioMenu.css('height', height);
     });
-
-
 
 
     ///////////////////////////////
@@ -249,7 +244,6 @@ $(function () {
                 segments: 8, // quantity of segments, default is 8  
                 lineDur: 3000, //duration of line-time animation (ms), default is 5000
                 segmentDur: 500, //duration of toggle segment animation (ms), default is 2000
-                //segmentPhase: 125, // interval of time (ms) from start inimation of a segment before start animation of next segment 
                 linePosition: 'bottom', // position of line-time: 'bottom' or 'top', default is 'bottom'
                 lineHeight: '5px', // height of line-time (px, em, rem, %), default is '5px';
                 lineColor: 'red', // color of line-time, default is 'red'
@@ -264,25 +258,37 @@ $(function () {
         $('#modalSliderNew').addClass('active');
 
     });
-    //////////////////////////////
-    ///// модальное окно для ABOUT
-    //////////////////////////////
+    //////////////////////////////////
+    ///// модальное окно для ABOUT ///
+    //////////////////////////////////
     let id_about_img;
     $('.about__achievements-item').on('click', function () {
+        $this = $(this);
         id_about_img = $(this).attr('id').match(/\d+/g)[0];
-        //console.log(id_about_img);
-
         $('.portfolio__modal').append('<div class="" id="modalSliderNew"></div>');
         sliderNew = $('#modalSliderNew');
-        sliderNew.append(`<img class='only' src="img/about/${id_about_img}.jpg" alt="">`)
+        sliderNew.append(`<img class='only' alt="">`)
+        sliderNewImg = $('#modalSliderNew img');
 
-        body.toggleClass('lock');
-        $('.portfolio__modal').animate({
-            'left': '0'
-        }, 400);
-        $('#modalSliderNew').addClass('active');
+        let promise = new Promise(function (resolve, reject) {
+            $this.addClass('load');
+            sliderNewImg.attr('src', `img/about/${id_about_img}.jpg`);
+            sliderNewImg.on('load', function () {
+                resolve();
+            })
+        });
+
+        promise.then(
+            function () {
+                $this.removeClass('load');
+                body.toggleClass('lock');
+                $('.portfolio__modal').animate({
+                    'left': '0'
+                }, 400);
+                $('#modalSliderNew').addClass('active');
+            }
+        )
     });
-
 
     // закрыть окно
     $('.portfolio__modal-close').on('click', function () {
@@ -360,11 +366,6 @@ $(function () {
         let windowHeight = $(window).height();
         let otherHeight = windowHeight - headerHeight; //высота окна без header
 
-        // console.log(`aboutDescriptionHeight = ${aboutDescriptionHeight}`);
-        // console.log(`headerHeight = ${headerHeight}`);
-        // console.log(`windowHeight = ${windowHeight}`);
-        // console.log(``);
-
         if (aboutDescriptionHeight > otherHeight) {
             $('.about').addClass('adaptive');
             $('.about__description').addClass('adaptive');
@@ -402,15 +403,11 @@ $(function () {
 
     // блок services
     let windowHeight = $(window).height();
-    cl(windowHeight);
     let servicesTitleHeight = $('.services__title').innerHeight();
-    cl(servicesTitleHeight);
     $('.services__item-img').each(function (index, elem) {
         let servicesItemTitleboxHeight = $('.services__item-titlebox').eq(index).innerHeight();
         let servicesItemTextHeight = $('.services__item-text').eq(index).innerHeight();
-        //cl(servicesItemTextHeight);
         let servicesItemImgHeight = (windowHeight - servicesTitleHeight - 30) / 2 - servicesItemTitleboxHeight - servicesItemTextHeight - 20;
-        cl(servicesItemImgHeight);
         $(elem).css('height', servicesItemImgHeight + 'px');
     });
 
@@ -452,14 +449,12 @@ $(function () {
 
     $('.img-wrapper').on('mouseenter', function (e) {
         xStart = e.pageX;
-        cl(xStart);
     });
 
     $('.img-wrapper').on('mousemove', function (e) {
         let x = e.pageX; // текущее положение мыши
         let step = 600 / 36;
         let countStepNext = Math.floor((x - xStart) / step);
-        cl(countStep);
 
         if (countStepNext > 0 && countStepNext !== countStep) {
             $('.img-wrapper img').eq(countStep).css('opacity', '0');
@@ -470,40 +465,71 @@ $(function () {
 
     });
 
-    ///////////////////////////////////////////////////
-    //////////// ЧЕТВЕРТЫЙ БЛОК SERVICES ///////////
-    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+    //////////// ЧЕТВЕРТЫЙ БЛОК SERVICES МОДАЛЬНОЕ ОКНО ///////////
+    ///////////////////////////////////////////////////////////////
     $('.services__item-img3').on('click', function () {
-
-        // id выбранного блока 
-        //id = $(this).parent().parent().attr('id').match(/\d+/g);
-
+        let $this = $(this);
+        $this.addClass('load');
         $('.portfolio__modal').append('<div class="" id="modalSliderNew"></div>');
         sliderNew = $('#modalSliderNew');
         // копирование картинок в слайдер
-        for (let i = 1; i <= 3; i++) {
+        for (let i = 0; i < 4; i++) {
             sliderNew.append(`<img src="img/services/3/${i}.jpg" alt="">`)
         }
+        let promises = [];
+        for (let i = 0; i < 4; i++) {
+            promises[i] = new Promise(function (resolve, reject) {
+                $('#modalSliderNew img').eq(i).attr('src', `img/services/3/${i}.jpg`);
+                $('#modalSliderNew img').eq(i).on('load', function () {
+                    resolve();
+                })
+            });
+        }
+        let promiseAll = Promise.all([promises[0], promises[1], promises[2], promises[3]]);
+        promiseAll.then(function (result) {
+            $this.removeClass('load')
+            sliderNew.SegmentSlider({
+                segments: 8, // quantity of segments, default is 8  
+                lineDur: 3000, //duration of line-time animation (ms), default is 5000
+                segmentDur: 500, //duration of toggle segment animation (ms), default is 2000
+                linePosition: 'bottom', // position of line-time: 'bottom' or 'top', default is 'bottom'
+                lineHeight: '5px', // height of line-time (px, em, rem, %), default is '5px';
+                lineColor: 'red', // color of line-time, default is 'red'
+                lineOpacity: 1 // opacity of line-time, default is .5
+            });
 
-        // создать слайдер
-        sliderNew.SegmentSlider({
-            segments: 8, // quantity of segments, default is 8  
-            lineDur: 6000, //duration of line-time animation (ms), default is 5000
-            segmentDur: 500, //duration of toggle segment animation (ms), default is 2000
-            //segmentPhase: 125, // interval of time (ms) from start inimation of a segment before start animation of next segment 
-            linePosition: 'bottom', // position of line-time: 'bottom' or 'top', default is 'bottom'
-            lineHeight: '5px', // height of line-time (px, em, rem, %), default is '5px';
-            lineColor: 'red', // color of line-time, default is 'red'
-            lineOpacity: 1 // opacity of line-time, default is .5
+            body.toggleClass('lock');
+            $('.portfolio__modal').animate({
+                'left': '0'
+            }, 400);
+            $('#modalSliderNew').addClass('active');
         });
 
 
-        body.toggleClass('lock');
-        $('.portfolio__modal').animate({
-            'left': '0'
-        }, 400);
-        $('#modalSliderNew').addClass('active');
 
+
+        // let promiseAll = Promise.all([promise1, promise2, promise3]);
+        // promiseAll.then(
+        //     function (result) {
+        //         // создать слайдер
+        //         sliderNew.SegmentSlider({
+        //             segments: 8, // quantity of segments, default is 8  
+        //             lineDur: 6000, //duration of line-time animation (ms), default is 5000
+        //             segmentDur: 500, //duration of toggle segment animation (ms), default is 2000
+        //             //segmentPhase: 125, // interval of time (ms) from start inimation of a segment before start animation of next segment 
+        //             linePosition: 'bottom', // position of line-time: 'bottom' or 'top', default is 'bottom'
+        //             lineHeight: '5px', // height of line-time (px, em, rem, %), default is '5px';
+        //             lineColor: 'red', // color of line-time, default is 'red'
+        //             lineOpacity: 1 // opacity of line-time, default is .5
+        //         });
+        //         body.toggleClass('lock');
+        //         $('.portfolio__modal').animate({
+        //             'left': '0'
+        //         }, 400);
+        //         $('#modalSliderNew').addClass('active');
+        //     }
+        // );
     });
 
 
