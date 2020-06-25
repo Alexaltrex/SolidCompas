@@ -871,13 +871,16 @@ body {
                         grid-template-rows: repeat(4, auto);
                     }
 
-
                     .services__item {
                         border-radius: 10px;
                         background-color: #fff;
                         display: flex;
                         flex-direction: column;
                         padding-bottom: 10px;
+
+                        &:nth-child(3){
+                            align-items: center;
+                        }
 
                         .services__item-titlebox {
                             display: flex;
@@ -935,6 +938,12 @@ body {
                             &.services__item-img0 {
                                 img {
                                     transition: opacity .3s;
+                                }
+                            }
+
+                            &.services__item-img2 {
+                                img {
+                                    opacity: 0;
                                 }
                             }
 
@@ -1504,8 +1513,8 @@ body {
                     right: 0;
                     width: 60px;
                     height: 60px;
-                    border-radius: 0 0 0 5px;
-                    background-color: $bgrc;
+                    //border-radius: 0 0 0 5px;
+                    background-color: $tc3;//$bgrc;
                     cursor: pointer;
                     z-index: 10;
 

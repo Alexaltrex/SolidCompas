@@ -311,6 +311,7 @@ $(function () {
     ////////////////////////////////////////////////////
     /////////////// АДАПТИВНОСТЬ ///////////////////////
     ////////////////////////////////////////////////////
+
     function adaptive() {
         ////////////////////////////////////////////////
         ///// АДАПТИВНОСТЬ БЛОКА portfolio__items //////
@@ -411,6 +412,8 @@ $(function () {
         $(elem).css('height', servicesItemImgHeight + 'px');
     });
 
+    $('.services__item-img2').css('width', $('.services__item-img2').innerHeight() + 'px');
+
 
     ///////////////////////////////////////////////////
 
@@ -425,7 +428,7 @@ $(function () {
 
 
     ///////////////////////////////////////////////////
-    //////////// ПЕРВЫЙ СЛАЙДЕР SERVICES //////////////
+    //////////// ПЕРВЫЙ БЛОК SERVICES - СЛАЙДЕР////////
     ///////////////////////////////////////////////////
     let servicesItemImg = $('.services__item-img.services__item-img0 img');
     let servicesItemImgCount = 0;
@@ -439,29 +442,36 @@ $(function () {
     }, 1000);
 
     ///////////////////////////////////////////////////
-    //////////// ВТОРОЙ СЛАЙДЕР SERVICES //////////////
+    //////////// ТРЕТИЙ БЛОК SERVICES /////////////////
     ///////////////////////////////////////////////////
-
     let xStart;
-    let countStep = 0,
-        countStepNext;
-    $('.services__item-img.services__item-img2 img').eq(countStep).css('opacity', '1')
+    let countStep = 0;
+    let countStepNext;
+    $('.services__item-img2 img').eq(countStep).css('opacity', '1')
 
-    $('.img-wrapper').on('mouseenter', function (e) {
+    $('.services__item-img2').on('mouseenter', function (e) {
+        $('.services__item-img2 img').css('opacity', '0')
+        $('.services__item-img2 img').eq(0).css('opacity', '1')
         xStart = e.pageX;
+        //cl('test')
     });
 
-    $('.img-wrapper').on('mousemove', function (e) {
+    $('.services__item-img2').on('mousemove', function (e) {
         let x = e.pageX; // текущее положение мыши
-        let step = 600 / 36;
-        let countStepNext = Math.floor((x - xStart) / step);
+        let step = $('.services__item-img2').innerHeight() / 72;
+        countStepNext = Math.floor((x - xStart) / step);
+        //cl(countStep % 35)
+        if (countStepNext !== countStep) {
+            if (countStepNext >= 0) {
+                $('.services__item-img2 img').eq(countStep % 36).css('opacity', '0');
+                $('.services__item-img2 img').eq(countStepNext % 36).css('opacity', '1');
 
-        if (countStepNext > 0 && countStepNext !== countStep) {
-            $('.img-wrapper img').eq(countStep).css('opacity', '0');
-            $('.img-wrapper img').eq(countStepNext).css('opacity', '1');
+            } else {
+                $('.services__item-img2 img').eq((35+countStep) % 36).css('opacity', '0');
+                $('.services__item-img2 img').eq((35+countStepNext) % 36).css('opacity', '1');
+            }
             countStep = countStepNext;
         }
-        //$('.img-wrapper img').css('opacity', '0');
 
     });
 
@@ -505,31 +515,6 @@ $(function () {
             }, 400);
             $('#modalSliderNew').addClass('active');
         });
-
-
-
-
-        // let promiseAll = Promise.all([promise1, promise2, promise3]);
-        // promiseAll.then(
-        //     function (result) {
-        //         // создать слайдер
-        //         sliderNew.SegmentSlider({
-        //             segments: 8, // quantity of segments, default is 8  
-        //             lineDur: 6000, //duration of line-time animation (ms), default is 5000
-        //             segmentDur: 500, //duration of toggle segment animation (ms), default is 2000
-        //             //segmentPhase: 125, // interval of time (ms) from start inimation of a segment before start animation of next segment 
-        //             linePosition: 'bottom', // position of line-time: 'bottom' or 'top', default is 'bottom'
-        //             lineHeight: '5px', // height of line-time (px, em, rem, %), default is '5px';
-        //             lineColor: 'red', // color of line-time, default is 'red'
-        //             lineOpacity: 1 // opacity of line-time, default is .5
-        //         });
-        //         body.toggleClass('lock');
-        //         $('.portfolio__modal').animate({
-        //             'left': '0'
-        //         }, 400);
-        //         $('#modalSliderNew').addClass('active');
-        //     }
-        // );
     });
 
 
