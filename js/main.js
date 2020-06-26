@@ -137,14 +137,38 @@ $(function () {
     portfolioItems.css('height', `${Math.ceil(Items0.length / 4) * 210}px`);
 
     menuItems.on('click', function () {
-        // сворачивать меню и анимировать значок бурег
+        // сворачивать меню и анимировать значок бургер
         // но, только если в соотв. диапазоне размера экрана
         if (parseInt($('.portfolio').css('width')) < 900) {
             portfolioBurger.toggleClass('active');
             portfolioMenu.toggleClass('active');
         }
 
-        let i = menuItems.index($(this)); // номер НОВОЙ категории 
+        let i = menuItems.index($(this)); // номер НОВОЙ категории
+        let categoryText;
+        switch (i) {
+            case 0: {
+                categoryText = '';
+                break;
+            }
+            case 1: {
+                categoryText = 'уличные зонты';
+                break;
+            }
+            case 2: {
+                categoryText = 'складское оборудование';
+                break;
+            }
+            case 3: {
+                categoryText = 'оборудование для уличной торговли';
+                break;
+            }
+            case 4: {
+                categoryText = 'рендеринг и визуализация';
+                break;
+            }
+        }
+        $('.portfolio__title-text span:last-child').text(categoryText);
         if (i !== iActive) {
             $(this).addClass('active');
             menuItems.eq(iActive).removeClass('active');
@@ -467,8 +491,8 @@ $(function () {
                 $('.services__item-img2 img').eq(countStepNext % 36).css('opacity', '1');
 
             } else {
-                $('.services__item-img2 img').eq((35+countStep) % 36).css('opacity', '0');
-                $('.services__item-img2 img').eq((35+countStepNext) % 36).css('opacity', '1');
+                $('.services__item-img2 img').eq((35 + countStep) % 36).css('opacity', '0');
+                $('.services__item-img2 img').eq((35 + countStepNext) % 36).css('opacity', '1');
             }
             countStep = countStepNext;
         }

@@ -1268,6 +1268,14 @@ body section.content section.portfolio .portfolio__title .portfolio__title-text 
   margin: 0px 10px;
 }
 
+body section.content section.portfolio .portfolio__title .portfolio__title-text span:last-child {
+  text-transform: none;
+  font-style: italic;
+  font-size: 24px;
+  font-weight: 400;
+  color: #a55200;
+}
+
 body section.content section.portfolio .portfolio__menu {
   height: 48px;
   margin: 0px 10px;
