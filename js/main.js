@@ -152,19 +152,19 @@ $(function () {
                 break;
             }
             case 1: {
-                categoryText = 'уличные зонты';
+                categoryText = '...уличные зонты';
                 break;
             }
             case 2: {
-                categoryText = 'складское оборудование';
+                categoryText = '...складское оборудование';
                 break;
             }
             case 3: {
-                categoryText = 'оборудование для уличной торговли';
+                categoryText = '...оборудование для уличной торговли';
                 break;
             }
             case 4: {
-                categoryText = 'рендеринг и визуализация';
+                categoryText = '...рендеринг и визуализация';
                 break;
             }
         }
@@ -482,7 +482,7 @@ $(function () {
 
     $('.services__item-img2').on('mousemove', function (e) {
         let x = e.pageX; // текущее положение мыши
-        let step = $('.services__item-img2').innerHeight() / 72;
+        let step = $('.services__item-img2').innerHeight() / 36;
         countStepNext = Math.floor((x - xStart) / step);
         //cl(countStep % 35)
         if (countStepNext !== countStep) {

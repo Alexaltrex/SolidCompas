@@ -745,23 +745,31 @@ body section.content section.home .home__titlebox .home__slider .home__slider-it
 }
 
 body section.content section.home .home__titlebox .home__slider .home__slider-item:nth-child(1) {
-  background-image: url("../img/home-bgr1.jpg");
+  background-image: url("../img/home-bgr/home-bgr1.jpg");
 }
 
 body section.content section.home .home__titlebox .home__slider .home__slider-item:nth-child(2) {
-  background-image: url("../img/home-bgr2.jpg");
+  background-image: url("../img/home-bgr/home-bgr2.jpg");
 }
 
 body section.content section.home .home__titlebox .home__slider .home__slider-item:nth-child(3) {
-  background-image: url("../img/home-bgr3.jpg");
+  background-image: url("../img/home-bgr/home-bgr3.jpg");
 }
 
 body section.content section.home .home__titlebox .home__slider .home__slider-item:nth-child(4) {
-  background-image: url("../img/home-bgr4.jpg");
+  background-image: url("../img/home-bgr/home-bgr4.jpg");
 }
 
 body section.content section.home .home__titlebox .home__slider .home__slider-item:nth-child(5) {
-  background-image: url("../img/home-bgr5.jpg");
+  background-image: url("../img/home-bgr/home-bgr5.jpg");
+}
+
+body section.content section.home .home__titlebox .home__slider .home__slider-item:nth-child(6) {
+  background-image: url("../img/home-bgr/home-bgr6.jpg");
+}
+
+body section.content section.home .home__titlebox .home__slider .home__slider-item:nth-child(7) {
+  background-image: url("../img/home-bgr/home-bgr7.jpg");
 }
 
 body section.content section.home .home__titlebox .home__slider .home__slider-item.anim1 {
@@ -1014,10 +1022,10 @@ body section.content section.services .services__items .services__items-inner .s
   padding-bottom: 10px;
 }
 
-body section.content section.services .services__items .services__items-inner .services__item:nth-child(3) {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+body section.content section.services .services__items .services__items-inner .services__item:nth-child(3) .services__item-img {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 body section.content section.services .services__items .services__items-inner .services__item .services__item-titlebox {
@@ -1304,8 +1312,8 @@ body section.content section.portfolio .portfolio__menu {
 body section.content section.portfolio .portfolio__menu nav.portfolio__menu-inner {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[5];
-      grid-template-columns: repeat(5, auto);
+  -ms-grid-columns: (auto)[6];
+      grid-template-columns: repeat(6, auto);
   width: 100%;
   height: 100%;
 }

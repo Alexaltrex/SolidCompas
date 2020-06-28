@@ -654,9 +654,9 @@ body {
                         background-repeat: no-repeat;
                         background-attachment: fixed;
 
-                        @for $i from 1 through 5 {
+                        @for $i from 1 through 7 {
                             &:nth-child(#{$i}) {
-                                background-image: url('../img/home-bgr'+ $i + '.jpg');
+                                background-image: url('../img/home-bgr/home-bgr'+ $i + '.jpg');
                                 //z-index: -$i;
                             }
                         }
@@ -879,7 +879,11 @@ body {
                         padding-bottom: 10px;
 
                         &:nth-child(3){
-                            align-items: center;
+                            //align-items: center;
+                            .services__item-img {
+                                align-self: center;
+                            }
+
                         }
 
                         .services__item-titlebox {
@@ -1169,7 +1173,7 @@ body {
 
                 nav.portfolio__menu-inner {
                     display: grid;
-                    grid-template-columns: repeat(5, auto);
+                    grid-template-columns: repeat(6, auto);
                     width: 100%;
                     height: 100%;
 
