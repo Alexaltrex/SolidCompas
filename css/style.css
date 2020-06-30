@@ -873,6 +873,10 @@ body section.content section.about .about__description .about__description-inner
   text-indent: 40px;
 }
 
+body section.content section.about .about__description .about__description-inner .about__text a {
+  color: #ffb56c;
+}
+
 body section.content section.about .about__description .about__description-inner .about__achievements {
   display: -webkit-box;
   display: -ms-flexbox;
