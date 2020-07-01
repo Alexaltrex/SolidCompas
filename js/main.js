@@ -464,7 +464,7 @@ $(function () {
         servicesItemImg.eq(servicesItemImgCountNext).css('opacity', '1');
         servicesItemImgCount = servicesItemImgCountNext;
     }, 1000);
-
+    
     ///////////////////////////////////////////////////
     //////////// ТРЕТИЙ БЛОК SERVICES /////////////////
     ///////////////////////////////////////////////////

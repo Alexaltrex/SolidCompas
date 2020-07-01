@@ -922,6 +922,7 @@ body {
                             margin: 0 20px 10px;
 
                             &.services__item-img0,
+                            &.services__item-img1,
                             &.services__item-img2,
                             &.services__item-img3 {
                                 position: relative;
@@ -955,7 +956,7 @@ body {
                                     opacity: 0;
                                 }
                             }
-
+                            
                             &.services__item-img3 {
                                 border: 3px solid transparent;
 
