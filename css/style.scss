@@ -2,10 +2,11 @@ $bgrc: #000080;
 $bgrc2: #2e2eff;
 $bgrc3: #0f8ac4;
 $tc: #fff;
-$tc2: #ffb56c;
+$tc2: rgb(255, 181, 108);
 $tc3: rgb(165, 82, 0);
 $anim1_time: 6s;
 $anim2_time: .5s;
+
 
 :root {
     --anim1_time: 6s;
@@ -14,6 +15,7 @@ $anim2_time: .5s;
 
 
 @import url('fonts.css');
+@import url('fonts2.css');
 
 @mixin for-phone-only {
     @media (max-width: 599px) {
@@ -206,11 +208,8 @@ body {
                         &.block2 {
                             position: absolute;
                         }
-
                     }
-
                 }
-
             }
 
             .header__links {
@@ -513,11 +512,8 @@ body {
                         }
                     }
                 }
-
             }
-
         }
-
     }
 
     section.content {
@@ -594,7 +590,7 @@ body {
             }
 
             .home__titlebox {
-                height: calc(100vh - 300px);
+                height: calc(100vh - 250px);
                 position: relative;
 
                 .home__titlebox-inner {
@@ -631,7 +627,7 @@ body {
                 }
 
                 @include for-phone-only {
-                    height: calc(100vh - (200px + 65px));
+                    height: calc(100vh - (150px + 65px));
                 }
 
                 .home__slider {
@@ -654,7 +650,7 @@ body {
                         background-repeat: no-repeat;
                         background-attachment: fixed;
 
-                        @for $i from 1 through 7 {
+                        @for $i from 1 through 6 {
                             &:nth-child(#{$i}) {
                                 background-image: url('../img/home-bgr/home-bgr'+ $i + '.jpg');
                                 //z-index: -$i;
@@ -682,7 +678,7 @@ body {
                 background-color: $bgrc3;
                 background-size: 400px 400px;
                 background-blend-mode: multiply;
-                height: 200px;
+                height: 150px;
             }
 
 
@@ -749,7 +745,7 @@ body {
                         margin: 0px 10px;
                         text-indent: 40px;
 
-                        a{
+                        a {
                             //text-decoration: none;
                             color: $tc2;
                         }
@@ -779,8 +775,9 @@ body {
                                     width: 100%;
                                     height: 100%;
                                     background-color: rgba(0, 0, 0, 0.75);
-                                    z-index: 10;  
+                                    z-index: 10;
                                 }
+
                                 &:after {
                                     position: absolute;
                                     content: url('../img/oval.svg');
@@ -790,7 +787,7 @@ body {
                                     transform: translate(-50%, -50%);
                                     //width: 100%;
                                     //height: 100%;
-                                    z-index: 11;  
+                                    z-index: 11;
                                 }
                             }
 
@@ -883,7 +880,8 @@ body {
                         flex-direction: column;
                         padding-bottom: 10px;
 
-                        &:nth-child(3){
+                        &:nth-child(3) {
+
                             //align-items: center;
                             .services__item-img {
                                 align-self: center;
@@ -927,7 +925,6 @@ body {
                             &.services__item-img3 {
                                 position: relative;
 
-
                                 @include for-tablet-portrait-and-below {
                                     min-height: 300px;
                                     height: 100%;
@@ -941,7 +938,6 @@ body {
                                     max-height: 100%;
                                     max-width: 100%;
                                     display: block;
-                                    //transition: .3s;
                                 }
                             }
 
@@ -956,7 +952,7 @@ body {
                                     opacity: 0;
                                 }
                             }
-                            
+
                             &.services__item-img3 {
                                 border: 3px solid transparent;
 
@@ -972,7 +968,7 @@ body {
 
                                 &.load {
                                     position: relative;
-    
+
                                     &:before {
                                         position: absolute;
                                         content: '';
@@ -982,8 +978,9 @@ body {
                                         width: 100%;
                                         height: 100%;
                                         background-color: rgba(0, 0, 0, 0.75);
-                                        z-index: 10;  
+                                        z-index: 10;
                                     }
+
                                     &:after {
                                         position: absolute;
                                         content: url('../img/oval.svg');
@@ -991,9 +988,7 @@ body {
                                         top: 50%;
                                         left: 50%;
                                         transform: translate(-50%, -50%);
-                                        //width: 100%;
-                                        //height: 100%;
-                                        z-index: 11;  
+                                        z-index: 11;
                                     }
                                 }
 
@@ -1023,7 +1018,6 @@ body {
                             .services__item-subtext {
                                 display: flex;
                                 justify-content: space-evenly;
-                                //margin-top: 5px;
                                 padding: 5px 20px 0px;
 
                                 img {
@@ -1034,31 +1028,9 @@ body {
                                 }
                             }
                         }
-
-
-
                     }
-
                 }
             }
-
-            // .img-wrapper {
-            //     width: 300px;
-            //     height: 300px;
-            //     position: relative;
-            //     text-align: center;
-            //     cursor: move;
-
-            //     img {
-            //         width: 100%;
-            //         position: absolute;
-            //         left: 0;
-            //         top: 0;
-            //         opacity: 0;
-            //     }
-            // }
-
-
         }
 
         section.portfolio {
@@ -1144,7 +1116,7 @@ body {
                     padding: 20px 10px;
                     margin: 0px 10px;
 
-                    span:last-child{
+                    span:last-child {
                         text-transform: none;
                         font-style: italic;
                         font-size: 24px;
@@ -1375,7 +1347,7 @@ body {
             .portfolio__items {
                 display: flex;
                 flex-wrap: wrap;
-                margin: 0px 5px 200px;
+                margin: 0px 5px 10px;
                 position: relative;
 
 
@@ -1486,7 +1458,6 @@ body {
                                 animation: animButton 1.25s .25s infinite;
                             }
 
-
                         }
                     }
                 }
@@ -1532,7 +1503,7 @@ body {
                     width: 60px;
                     height: 60px;
                     //border-radius: 0 0 0 5px;
-                    background-color: $tc3;//$bgrc;
+                    background-color: $tc3; //$bgrc;
                     cursor: pointer;
                     z-index: 10;
 
@@ -1564,16 +1535,215 @@ body {
 
         }
 
-        section.calculate {
-            height: 100vh;
-            background-color: #ccc;
+        section.prices {
+            //height: 100vh;
+
+            .prices__title {
+                width: 100%;
+                background-image: url('../img/prices-bgr.jpg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+
+                .prices__title-inner {
+                    max-width: 1120px;
+                    width: 100%;
+                    margin: 0px auto;
+                    text-transform: uppercase;
+                    font-size: 30px;
+                    color: #000;
+                    font-weight: 700;
+                    padding: 0px 30px;
+                    box-sizing: border-box;
+                    height: 78px;
+                    line-height: 78px;
+                }
+
+            }
+
+            .prices__main {
+                //height: calc(100vh - 78px);
+                background-image: url('../img/bgr.jpg');
+                background-color: $bgrc3;
+                background-size: 400px 400px;
+                background-blend-mode: multiply;
+
+                .prices__items-inner {
+                    max-width: 1120px;
+                    width: 100%;
+                    margin: 0px auto;
+                    box-sizing: border-box;
+                    padding: 10px;
+
+
+                    .prices__items-parts {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        grid-column-gap: 30px;
+                        align-items: center;
+
+                        .prices__items-part-left {
+                            display: flex;
+                            justify-content: flex-end;
+
+                            .labels1 {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-end;
+
+                                .label {
+                                    height: 40px;
+                                    font-size: 20px;
+                                    margin: 10px 0;
+                                    line-height: 40px;
+                                    cursor: pointer;
+                                    transition: .2s;
+
+                                    &:hover,
+                                    &.hover {
+                                        color: $tc2;
+                                    }
+
+                                    &.active {
+                                        color: lime;
+                                    }
+
+                                }
+                            }
+
+                            .switch1 {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                position: relative;
+                                width: 40px;
+                                margin-left: 10px;
+
+                                .circle {
+                                    width: 40px;
+                                    height: 40px;
+                                    background-color: rgb(0, 0, 0);
+                                    border-radius: 50%;
+                                    margin: 10px 0;
+                                    cursor: pointer;
+                                    z-index: 1;
+                                    transition: .2s;
+                                }
+
+                                .block {
+                                    position: absolute;
+                                    width: 10px;
+                                    height: 240px;
+                                    background-color: rgb(2, 1, 1);
+                                    left: 50%;
+                                    top: 20px;
+                                    transform: translate(-50%, 0);
+                                }
+
+                                .ball {
+                                    position: absolute;
+                                    width: 30px;
+                                    height: 30px;
+                                    background: rgb(255, 255, 255);
+                                    background: radial-gradient(circle, rgb(255, 192, 192) 0%, rgb(204, 0, 0) 40%);
+                                    border-radius: 50%;
+                                    z-index: 10;
+                                    transition: .2s;
+                                }
+                            }
+                        }
+
+                        .prices__items-part-right {
+                            display: flex;
+                            justify-content: flex-start;
+
+                            .switch2 {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                position: relative;
+                                width: 40px;
+                                margin-right: 10px;
+
+                                .circle {
+                                    width: 40px;
+                                    height: 40px;
+                                    background-color: rgb(0, 0, 0);
+                                    border-radius: 50%;
+                                    margin: 10px 0;
+                                    cursor: pointer;
+                                    z-index: 1;
+                                }
+
+                                .block {
+                                    position: absolute;
+                                    width: 10px;
+                                    height: 180px;
+                                    background-color: rgb(0, 0, 0);
+                                    left: 50%;
+                                    top: 20px;
+                                    transform: translate(-50%, 0);
+                                }
+
+                                .ball {
+                                    position: absolute;
+                                    width: 30px;
+                                    height: 30px;
+                                    background: rgb(255, 255, 255);
+                                    background: radial-gradient(circle, rgb(255, 192, 192) 0%, rgb(204, 0, 0) 40%);
+                                    border-radius: 50%;
+                                    z-index: 10;
+                                    transition: .2s;
+                                }
+
+                            }
+
+                            .labels2 {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+
+                                .label {
+                                    height: 40px;
+                                    font-size: 20px;
+                                    margin: 10px 0;
+                                    line-height: 40px;
+                                    cursor: pointer;
+                                    transition: .2s;
+
+                                    &:hover,
+                                    &.hover {
+                                        color: $tc2;
+                                    }
+
+                                    &.active {
+                                        color: lime;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .final-price{
+                        margin-left: 25%;
+                        margin-bottom: 20px;
+                        color: $tc2;
+                        display: flex;
+
+                        .final-price-title{
+                            font-size: 20px;
+                            margin-right: 10px;
+                        }
+
+                        .final-price-value{
+                            font-style: italic;
+                            font-size: 20px;
+                            color: lime;;
+                        }
+                    }
+                }
+            }
         }
-
-
     }
-
-
-
-
-
 }

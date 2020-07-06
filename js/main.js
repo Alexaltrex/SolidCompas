@@ -131,7 +131,6 @@ $(function () {
 
     let menuItems = $('.portfolio__menu-item');
     let portfolioItems = $('.portfolio__items');
-
     let Items0 = $('.portfolio__item');
 
     portfolioItems.css('height', `${Math.ceil(Items0.length / 4) * 210}px`);
@@ -239,9 +238,9 @@ $(function () {
     });
 
 
-    ///////////////////////////////
-    ////// МОДАЛЬНОЕ ОКНО /////////
-    ///////////////////////////////
+    ////////////////////////////////////////
+    /////////////// МОДАЛЬНОЕ ОКНО /////////
+    ////////////////////////////////////////
     // открыть окно
     let id;
     let sliderNew;
@@ -374,6 +373,8 @@ $(function () {
             margin = 0.5 * (itemsWidth / itemInRow - 267.5);
         }
 
+        portfolioItems.css('height', `${Math.ceil(Items0.length / itemInRow) * 210}px`);
+
         $('.portfolio__item').css('max-width', `calc(${100/itemInRow}% - ${2*margin}px)`);
         $(`.portfolio__item.category${iActive}`).each((index, elem) => {
             let nX = index % itemInRow; // номер столбца
@@ -464,7 +465,7 @@ $(function () {
         servicesItemImg.eq(servicesItemImgCountNext).css('opacity', '1');
         servicesItemImgCount = servicesItemImgCountNext;
     }, 1000);
-    
+
     ///////////////////////////////////////////////////
     //////////// ТРЕТИЙ БЛОК SERVICES /////////////////
     ///////////////////////////////////////////////////
@@ -541,6 +542,234 @@ $(function () {
         });
     });
 
+    ///////////////////////////////////////////
+    ////////////// PRICES /////////////////////
+    ///////////////////////////////////////////
+    // cl($('input[name="prices"]:checked').val());
+    // $('input[name="prices"]').on('click', function(){
+    //     $('.final-price span.output').text($(this).val());
+    // })
+    // левая половина
+    let activeNumberLeft = 0;
+    $('.prices__items-part-left .labels1 .label').eq(activeNumberLeft).addClass('active');
+    let ball1 = $('#ball1');
+    let left_initial = 5 + $('.prices__items-part-left .switch1 .circle:first').offset().left;
+    let top_initial = 5 + $('.prices__items-part-left .switch1 .circle:first').offset().top;
+    ball1.offset({
+        top: top_initial,
+        left: left_initial
+    });
 
+    $('.prices__items-part-left .switch1 .circle').on('click', function () {
+        let i = $('.prices__items-part-left .switch1 .circle').index($(this));
+        $('.prices__items-part-left .labels1 .label').eq(activeNumberLeft).removeClass('active');
+        $('.prices__items-part-left .labels1 .label').eq(i).addClass('active');
+        let left = 5 + $(this).offset().left;
+        let top = 5 + $(this).offset().top;
+        ball1.offset({
+            top: top,
+            left: left
+        });
+        activeNumberLeft = i;
+        Price(activeNumberLeft, activeNumberRight);
+    });
 
-})
+    $('.prices__items-part-left .labels1 .label').on('click', function () {
+        let i = $('.prices__items-part-left .labels1 .label').index($(this));
+        //alert(i)
+        $('.prices__items-part-left .labels1 .label').eq(activeNumberLeft).removeClass('active');
+        $('.prices__items-part-left .labels1 .label').eq(i).addClass('active');
+        let circle = $('.prices__items-part-left .switch1 .circle').eq(i);
+        cl(circle)
+        let left = 5 + circle.offset().left;
+        let top = 5 + circle.offset().top;
+        ball1.offset({
+            top: top,
+            left: left
+        });
+        activeNumberLeft = i;
+        Price(activeNumberLeft, activeNumberRight);
+    });
+
+    $('.prices__items-part-left .switch1 .circle').on('mouseenter', function () {
+        let i = $('.prices__items-part-left .switch1 .circle').index($(this));
+        //alert(i);
+        $('.prices__items-part-left .labels1 .label').eq(i).addClass('hover');
+    });
+
+    $('.prices__items-part-left .switch1 .circle').on('mouseleave', function () {
+        let i = $('.prices__items-part-left .switch1 .circle').index($(this));
+        //alert(i);
+        $('.prices__items-part-left .labels1 .label').eq(i).removeClass('hover');
+    });
+    ////////////////////////////////////
+    ////////// правая половина /////////
+    ////////////////////////////////////
+    let activeNumberRight = 0;
+    $('.labels2 .label').eq(activeNumberRight).addClass('active');
+    let ball2 = $('#ball2');
+    let left_initial2 = 5 + $('.switch2 .circle:first').offset().left;
+    let top_initial2 = 5 + $('.switch2 .circle:first').offset().top;
+    ball2.offset({
+        top: top_initial2,
+        left: left_initial2
+    });
+    
+
+    $('.switch2 .circle').on('click', function () {
+        let i = $('.switch2 .circle').index($(this));
+        $('.labels2 .label').eq(activeNumberRight).removeClass('active');
+        $('.labels2 .label').eq(i).addClass('active');
+        let left = 5 + $(this).offset().left;
+        let top = 5 + $(this).offset().top;
+        ball2.offset({
+            top: top,
+            left: left
+        });
+        activeNumberRight = i;
+        Price(activeNumberLeft, activeNumberRight);
+    });
+
+    $('.labels2 .label').on('click', function () {
+        let i = $('.labels2 .label').index($(this));
+        //alert(i)
+        $('.labels2 .label').eq(activeNumberRight).removeClass('active');
+        $('.labels2 .label').eq(i).addClass('active');
+        let circle = $('.switch2 .circle').eq(i);
+        cl(circle)
+        let left = 5 + circle.offset().left;
+        let top = 5 + circle.offset().top;
+        ball2.offset({
+            top: top,
+            left: left
+        });
+        activeNumberRight = i;
+        Price(activeNumberLeft, activeNumberRight);
+    });
+
+    $('.switch2 .circle').on('mouseenter', function () {
+        let i = $('.switch2 .circle').index($(this));
+        $('.labels2 .label').eq(i).addClass('hover');
+    });
+
+    $('.switch2 .circle').on('mouseleave', function () {
+        let i = $('.switch2 .circle').index($(this));
+        //alert(i);
+        $('.labels2 .label').eq(i).removeClass('hover');
+    });
+
+    function Price(i1, i2) {
+        let value;
+        switch (i1) {
+            case 0: {
+                switch (i2) {
+                    case 0: {
+                        value = 11;
+                        break;
+                    }
+                    case 1: {
+                        value = 12;
+                        break;
+                    }
+                    case 2: {
+                        value = 13;
+                        break;
+                    }
+                    case 3: {
+                        value = 14;
+                        break;
+                    }
+                }
+                break;
+            }
+            case 1: {
+                switch (i2) {
+                    case 0: {
+                        value = 21;
+                        break;
+                    }
+                    case 1: {
+                        value = 22;
+                        break;
+                    }
+                    case 2: {
+                        value = 23;
+                        break;
+                    }
+                    case 3: {
+                        value = 24;
+                        break;
+                    }
+                }
+                break;
+            }
+            case 2: {
+                switch (i2) {
+                    case 0: {
+                        value = 31;
+                        break;
+                    }
+                    case 1: {
+                        value = 32;
+                        break;
+                    }
+                    case 2: {
+                        value = 33;
+                        break;
+                    }
+                    case 3: {
+                        value = 34;
+                        break;
+                    }
+                }
+                break;
+            }
+            case 3: {
+                switch (i2) {
+                    case 0: {
+                        value = 41;
+                        break;
+                    }
+                    case 1: {
+                        value = 42;
+                        break;
+                    }
+                    case 2: {
+                        value = 43;
+                        break;
+                    }
+                    case 3: {
+                        value = 44;
+                        break;
+                    }
+                }
+                break;
+            }
+            case 4: {
+                switch (i2) {
+                    case 0: {
+                        value = 51;
+                        break;
+                    }
+                    case 1: {
+                        value = 52;
+                        break;
+                    }
+                    case 2: {
+                        value = 53;
+                        break;
+                    }
+                    case 3: {
+                        value = 54;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        $('.final-price-value span:first').text(value);
+    }
+
+    Price(activeNumberLeft, activeNumberRight);
+
+});
