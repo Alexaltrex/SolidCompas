@@ -545,61 +545,70 @@ $(function () {
     ///////////////////////////////////////////
     ////////////// PRICES /////////////////////
     ///////////////////////////////////////////
-    // cl($('input[name="prices"]:checked').val());
-    // $('input[name="prices"]').on('click', function(){
-    //     $('.final-price span.output').text($(this).val());
-    // })
-    // левая половина
+    // ЛЕВАЯ ПОЛОВИНА
+    // первоначальное позиционирование и стилизация
     let activeNumberLeft = 0;
-    $('.prices__items-part-left .labels1 .label').eq(activeNumberLeft).addClass('active');
+    $('.labels1 .label').eq(activeNumberLeft).addClass('active');
     let ball1 = $('#ball1');
-    let left_initial = 5 + $('.prices__items-part-left .switch1 .circle:first').offset().left;
-    let top_initial = 5 + $('.prices__items-part-left .switch1 .circle:first').offset().top;
+    let left_initial = 5 + $('.switch1 .circle:first').offset().left;
+    let top_initial = 5 + $('.switch1 .circle:first').offset().top;
     ball1.offset({
         top: top_initial,
         left: left_initial
     });
-
-    $('.prices__items-part-left .switch1 .circle').on('click', function () {
-        let i = $('.prices__items-part-left .switch1 .circle').index($(this));
-        $('.prices__items-part-left .labels1 .label').eq(activeNumberLeft).removeClass('active');
-        $('.prices__items-part-left .labels1 .label').eq(i).addClass('active');
-        let left = 5 + $(this).offset().left;
-        let top = 5 + $(this).offset().top;
+    // клик по кругу
+    $('.switch1 .circle').on('click', function () {
+        let i = $('.switch1 .circle').index($(this));
+        $('.labels1 .label').eq(activeNumberLeft).removeClass('active');
+        $('.labels1 .label').eq(i).addClass('active');
         ball1.offset({
-            top: top,
-            left: left
+            top: 5 + $(this).offset().top,
+            left: 5 + $(this).offset().left
         });
+        // на правой половине сместить на первое
+        if (activeNumberRight !== 0) {
+            $('.labels2 .label').eq(activeNumberRight).removeClass('active');
+            $('.labels2 .label').eq(0).addClass('active');
+            ball2.offset({
+                top: 5 + $($('.switch2 .circle').eq(0)).offset().top,
+                left: 5 + $($('.switch2 .circle').eq(0)).offset().left
+            });
+            activeNumberRight = 0;
+        }
         activeNumberLeft = i;
         Price(activeNumberLeft, activeNumberRight);
     });
-
+    // клик по названию
     $('.prices__items-part-left .labels1 .label').on('click', function () {
         let i = $('.prices__items-part-left .labels1 .label').index($(this));
         //alert(i)
         $('.prices__items-part-left .labels1 .label').eq(activeNumberLeft).removeClass('active');
         $('.prices__items-part-left .labels1 .label').eq(i).addClass('active');
-        let circle = $('.prices__items-part-left .switch1 .circle').eq(i);
-        cl(circle)
-        let left = 5 + circle.offset().left;
-        let top = 5 + circle.offset().top;
         ball1.offset({
-            top: top,
-            left: left
+            top: 5 + $('.prices__items-part-left .switch1 .circle').eq(i).offset().top,
+            left: 5 + $('.prices__items-part-left .switch1 .circle').eq(i).offset().left
         });
+        // на правой половине сместить на первое
+        if (activeNumberRight !== 0) {
+            $('.labels2 .label').eq(activeNumberRight).removeClass('active');
+            $('.labels2 .label').eq(0).addClass('active');
+            ball2.offset({
+                top: 5 + $($('.switch2 .circle').eq(0)).offset().top,
+                left: 5 + $($('.switch2 .circle').eq(0)).offset().left
+            });
+            activeNumberRight = 0;
+        }
         activeNumberLeft = i;
         Price(activeNumberLeft, activeNumberRight);
     });
-
+    // стилизация надписей при наведении на круги
     $('.prices__items-part-left .switch1 .circle').on('mouseenter', function () {
         let i = $('.prices__items-part-left .switch1 .circle').index($(this));
-        //alert(i);
         $('.prices__items-part-left .labels1 .label').eq(i).addClass('hover');
     });
 
     $('.prices__items-part-left .switch1 .circle').on('mouseleave', function () {
         let i = $('.prices__items-part-left .switch1 .circle').index($(this));
-        //alert(i);
         $('.prices__items-part-left .labels1 .label').eq(i).removeClass('hover');
     });
     ////////////////////////////////////
@@ -608,23 +617,18 @@ $(function () {
     let activeNumberRight = 0;
     $('.labels2 .label').eq(activeNumberRight).addClass('active');
     let ball2 = $('#ball2');
-    let left_initial2 = 5 + $('.switch2 .circle:first').offset().left;
-    let top_initial2 = 5 + $('.switch2 .circle:first').offset().top;
     ball2.offset({
-        top: top_initial2,
-        left: left_initial2
+        top: 5 + $('.switch2 .circle:first').offset().top,
+        left: 5 + $('.switch2 .circle:first').offset().left
     });
-    
 
     $('.switch2 .circle').on('click', function () {
         let i = $('.switch2 .circle').index($(this));
         $('.labels2 .label').eq(activeNumberRight).removeClass('active');
         $('.labels2 .label').eq(i).addClass('active');
-        let left = 5 + $(this).offset().left;
-        let top = 5 + $(this).offset().top;
         ball2.offset({
-            top: top,
-            left: left
+            top: 5 + $(this).offset().top,
+            left: 5 + $(this).offset().left
         });
         activeNumberRight = i;
         Price(activeNumberLeft, activeNumberRight);
@@ -632,16 +636,11 @@ $(function () {
 
     $('.labels2 .label').on('click', function () {
         let i = $('.labels2 .label').index($(this));
-        //alert(i)
         $('.labels2 .label').eq(activeNumberRight).removeClass('active');
         $('.labels2 .label').eq(i).addClass('active');
-        let circle = $('.switch2 .circle').eq(i);
-        cl(circle)
-        let left = 5 + circle.offset().left;
-        let top = 5 + circle.offset().top;
         ball2.offset({
-            top: top,
-            left: left
+            top: 5 + $('.switch2 .circle').eq(i).offset().top,
+            left: 5 + $('.switch2 .circle').eq(i).offset().left
         });
         activeNumberRight = i;
         Price(activeNumberLeft, activeNumberRight);
@@ -654,7 +653,6 @@ $(function () {
 
     $('.switch2 .circle').on('mouseleave', function () {
         let i = $('.switch2 .circle').index($(this));
-        //alert(i);
         $('.labels2 .label').eq(i).removeClass('hover');
     });
 

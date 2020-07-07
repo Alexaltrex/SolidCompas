@@ -1785,6 +1785,10 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.521);
+          box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.521);
 }
 
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-left {
@@ -1874,8 +1878,8 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
   background: radial-gradient(circle, #ffc0c0 0%, #cc0000 40%);
   border-radius: 50%;
   z-index: 10;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: .1s;
+  transition: .1s;
 }
 
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-right {
@@ -1932,8 +1936,8 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
   background: radial-gradient(circle, #ffc0c0 0%, #cc0000 40%);
   border-radius: 50%;
   z-index: 10;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: .1s;
+  transition: .1s;
 }
 
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-right .labels2 {
@@ -1968,12 +1972,19 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
 }
 
 body section.content section.prices .prices__main .prices__items-inner .final-price {
-  margin-left: 25%;
-  margin-bottom: 20px;
+  margin: 20px auto;
   color: #ffb56c;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px 0;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.521);
+          box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.521);
 }
 
 body section.content section.prices .prices__main .prices__items-inner .final-price .final-price-title {
@@ -1985,5 +1996,45 @@ body section.content section.prices .prices__main .prices__items-inner .final-pr
   font-style: italic;
   font-size: 20px;
   color: lime;
+}
+
+body section.content section.contacts .contacts__title {
+  width: 100%;
+  background-image: url("../img/prices-bgr.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body section.content section.contacts .contacts__title .contacts__title-inner {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0px auto;
+  text-transform: uppercase;
+  font-size: 30px;
+  color: #000;
+  font-weight: 700;
+  padding: 0px 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 78px;
+  line-height: 78px;
+}
+
+body section.content section.contacts .prices__main {
+  background-image: url("../img/bgr.jpg");
+  background-color: #0f8ac4;
+  background-size: 400px 400px;
+  background-blend-mode: multiply;
+}
+
+body section.content section.contacts .prices__main .prices__items-inner {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0px auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
 }
 /*# sourceMappingURL=style.css.map */
