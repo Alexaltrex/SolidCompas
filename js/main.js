@@ -127,8 +127,8 @@ $(function () {
     ///////////////////////////////////////////
     /////////// МЕНЮ ПОРТФОЛИО ////////////////
     ///////////////////////////////////////////
-    let iActive = 0; // номер активного элемента меню и номер категории 
-
+    let iActive = 0; // номер активного элемента меню и номер категории
+    let itemInRow = 4; // количество item в ряду
     let menuItems = $('.portfolio__menu-item');
     let portfolioItems = $('.portfolio__items');
     let Items0 = $('.portfolio__item');
@@ -144,30 +144,14 @@ $(function () {
         }
 
         let i = menuItems.index($(this)); // номер НОВОЙ категории
-        let categoryText;
-        switch (i) {
-            case 0: {
-                categoryText = '';
-                break;
-            }
-            case 1: {
-                categoryText = '...уличные зонты';
-                break;
-            }
-            case 2: {
-                categoryText = '...складское оборудование';
-                break;
-            }
-            case 3: {
-                categoryText = '...оборудование для уличной торговли';
-                break;
-            }
-            case 4: {
-                categoryText = '...рендеринг и визуализация';
-                break;
-            }
-        }
-        $('.portfolio__title-text span:last-child').text(categoryText);
+
+        // изменение надписи после ПОРТФОЛИО
+        let categoryTextArr = ['', '...уличные зонты', '...складское оборудование', 
+        '...оборудование для уличной торговли', '...рендеринг и визуализация', 
+        '...параметризация'];
+        $('.portfolio__title-text span:last-child').text(categoryTextArr[i]);
+
+        // если кликнули не по активному
         if (i !== iActive) {
             $(this).addClass('active');
             menuItems.eq(iActive).removeClass('active');
@@ -177,7 +161,7 @@ $(function () {
             let itemsNew = $(`.portfolio__item.category${i}`); // новый набор
             // изменение высоты родительского блока
             portfolioItems.animate({
-                height: `${Math.ceil(itemsNew.length / 4) * 210}px`
+                height: `${Math.ceil(itemsNew.length / itemInRow) * 210}px`
             }, 500);
 
             Items0.each((index, elem) => {
@@ -197,11 +181,10 @@ $(function () {
                 // если нет в текущем и есть в новом
                 // спозиционировать на новое место и показать
                 if (indexInCurr == -1 && indexInNew > -1) {
-                    let nXNew = indexInNew % 4;
-                    let nYNew = Math.trunc(indexInNew / 4);
-
+                    let nXNew = indexInNew % itemInRow;
+                    let nYNew = Math.trunc(indexInNew / itemInRow);
                     $(elem).css('display', 'block');
-                    $(elem).css('left', `calc(${nXNew * 25}% + 5px`);
+                    $(elem).css('left', `calc(${nXNew * (100/itemInRow)}% + ${margin}px`);
                     $(elem).css('top', `${nYNew * 200 + (2 * (nYNew + 1) - 1) * 5}px`);
                     $(elem).css('opacity', '1')
                 }
@@ -209,9 +192,9 @@ $(function () {
                 // если есть в текущем и есть в новом
                 // спозиционировать на новое место 
                 if (indexInCurr > -1 && indexInNew > -1) {
-                    let nXNew = indexInNew % 4;
-                    let nYNew = Math.trunc(indexInNew / 4);
-                    $(elem).css('left', `calc(${nXNew * 25}% + 5px`);
+                    let nXNew = indexInNew % itemInRow;
+                    let nYNew = Math.trunc(indexInNew / itemInRow);
+                    $(elem).css('left', `calc(${nXNew * (100/itemInRow)}% + ${margin}px`);
                     $(elem).css('top', `${nYNew * 200 + (2 * (nYNew + 1) - 1) * 5}px`);
                 }
             });
@@ -373,19 +356,19 @@ $(function () {
             margin = 0.5 * (itemsWidth / itemInRow - 267.5);
         }
 
-        portfolioItems.css('height', `${Math.ceil(Items0.length / itemInRow) * 210}px`);
-
+        let itemsCurr = $(`.portfolio__item.category${iActive}`);
+        
+        portfolioItems.css('height', `${Math.ceil(itemsCurr.length / itemInRow) * 210}px`);
         $('.portfolio__item').css('max-width', `calc(${100/itemInRow}% - ${2*margin}px)`);
         $(`.portfolio__item.category${iActive}`).each((index, elem) => {
             let nX = index % itemInRow; // номер столбца
             let nY = Math.trunc(index / itemInRow); //номер ряда
-
             $(elem).css('left', `calc(${nX * 100/itemInRow}% + ${margin}px`);
             $(elem).css('top', `${nY * 200 + (2 * (nY + 1) - 1) * 5}px`);
         });
 
         /////////////////////////////////////////
-        //////// адаптив блока ABOUT ////////////                   
+        //////// АДАПТИВ БЛОКА ABOUT ////////////                   
         /////////////////////////////////////////
         let aboutDescriptionHeight = $('.about__description').innerHeight();
         let headerHeight = $('.header').innerHeight();
@@ -401,7 +384,7 @@ $(function () {
         }
 
         /////////////////////////////////////////
-        //////// адаптив блока SERVICES /////////                  
+        //////// АДАПТИВ БЛОКА SERVICES /////////                  
         /////////////////////////////////////////
 
         //let windowHeight = $(window).height();
@@ -441,8 +424,6 @@ $(function () {
 
 
     ///////////////////////////////////////////////////
-
-    let itemInRow; // количество item в ряду
     let margin; // первоначальное значение горизотального margin у item
 
     // начальное позиционирование всего набора
@@ -662,19 +643,19 @@ $(function () {
             case 0: {
                 switch (i2) {
                     case 0: {
-                        value = 11;
+                        value = 1100;
                         break;
                     }
                     case 1: {
-                        value = 12;
+                        value = 1200;
                         break;
                     }
                     case 2: {
-                        value = 13;
+                        value = 1300;
                         break;
                     }
                     case 3: {
-                        value = 14;
+                        value = 1400;
                         break;
                     }
                 }
@@ -683,19 +664,19 @@ $(function () {
             case 1: {
                 switch (i2) {
                     case 0: {
-                        value = 21;
+                        value = 2100;
                         break;
                     }
                     case 1: {
-                        value = 22;
+                        value = 2200;
                         break;
                     }
                     case 2: {
-                        value = 23;
+                        value = 2300;
                         break;
                     }
                     case 3: {
-                        value = 24;
+                        value = 2400;
                         break;
                     }
                 }
@@ -704,19 +685,19 @@ $(function () {
             case 2: {
                 switch (i2) {
                     case 0: {
-                        value = 31;
+                        value = 3100;
                         break;
                     }
                     case 1: {
-                        value = 32;
+                        value = 3200;
                         break;
                     }
                     case 2: {
-                        value = 33;
+                        value = 3300;
                         break;
                     }
                     case 3: {
-                        value = 34;
+                        value = 3400;
                         break;
                     }
                 }
@@ -725,19 +706,19 @@ $(function () {
             case 3: {
                 switch (i2) {
                     case 0: {
-                        value = 41;
+                        value = 4100;
                         break;
                     }
                     case 1: {
-                        value = 42;
+                        value = 4200;
                         break;
                     }
                     case 2: {
-                        value = 43;
+                        value = 4300;
                         break;
                     }
                     case 3: {
-                        value = 44;
+                        value = 4400;
                         break;
                     }
                 }
@@ -746,19 +727,19 @@ $(function () {
             case 4: {
                 switch (i2) {
                     case 0: {
-                        value = 51;
+                        value = 5100;
                         break;
                     }
                     case 1: {
-                        value = 52;
+                        value = 5200;
                         break;
                     }
                     case 2: {
-                        value = 53;
+                        value = 5300;
                         break;
                     }
                     case 3: {
-                        value = 54;
+                        value = 5400;
                         break;
                     }
                 }

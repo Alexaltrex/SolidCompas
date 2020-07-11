@@ -1306,7 +1306,7 @@ body section.content section.portfolio .portfolio__menu {
     transition: .3s;
   }
   body section.content section.portfolio .portfolio__menu.active {
-    height: 195px;
+    height: 264px;
   }
 }
 
@@ -1740,9 +1740,9 @@ body section.content section.prices .prices__title {
   width: 100%;
   background-image: url("../img/prices-bgr.jpg");
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  height: 78px;
 }
 
 body section.content section.prices .prices__title .prices__title-inner {
@@ -1776,6 +1776,12 @@ body section.content section.prices .prices__main .prices__items-inner {
   padding: 10px;
 }
 
+@media (max-width: 599px) {
+  body section.content section.prices .prices__main .prices__items-inner {
+    padding: 5px;
+  }
+}
+
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts {
   display: -ms-grid;
   display: grid;
@@ -1789,6 +1795,12 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
   border-radius: 20px;
   -webkit-box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.521);
           box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.521);
+}
+
+@media (max-width: 599px) {
+  body section.content section.prices .prices__main .prices__items-inner .prices__items-parts {
+    grid-column-gap: 0;
+  }
 }
 
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-left {
@@ -1817,10 +1829,25 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
   height: 40px;
   font-size: 20px;
   margin: 10px 0;
-  line-height: 40px;
   cursor: pointer;
   -webkit-transition: .2s;
   transition: .2s;
+  text-align: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+@media (max-width: 599px) {
+  body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-left .labels1 .label {
+    font-size: 16px;
+  }
 }
 
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-left .labels1 .label:hover, body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-left .labels1 .label.hover {
@@ -1845,6 +1872,12 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
   position: relative;
   width: 40px;
   margin-left: 10px;
+}
+
+@media (max-width: 599px) {
+  body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-left .switch1 {
+    margin-left: 5px;
+  }
 }
 
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-left .switch1 .circle {
@@ -1907,6 +1940,12 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
   margin-right: 10px;
 }
 
+@media (max-width: 599px) {
+  body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-right .switch2 {
+    margin-right: 5px;
+  }
+}
+
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-right .switch2 .circle {
   width: 40px;
   height: 40px;
@@ -1957,10 +1996,24 @@ body section.content section.prices .prices__main .prices__items-inner .prices__
   height: 40px;
   font-size: 20px;
   margin: 10px 0;
-  line-height: 40px;
   cursor: pointer;
   -webkit-transition: .2s;
   transition: .2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+@media (max-width: 599px) {
+  body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-right .labels2 .label {
+    font-size: 16px;
+  }
 }
 
 body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-right .labels2 .label:hover, body section.content section.prices .prices__main .prices__items-inner .prices__items-parts .prices__items-part-right .labels2 .label.hover {
@@ -1980,11 +2033,24 @@ body section.content section.prices .prices__main .prices__items-inner .final-pr
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 20px 0;
+  padding: 20px 5px;
   border: 1px solid #fff;
   border-radius: 20px;
   -webkit-box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.521);
           box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.521);
+}
+
+@media (max-width: 599px) {
+  body section.content section.prices .prices__main .prices__items-inner .final-price {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 10px 5px;
+  }
 }
 
 body section.content section.prices .prices__main .prices__items-inner .final-price .final-price-title {
@@ -2000,7 +2066,7 @@ body section.content section.prices .prices__main .prices__items-inner .final-pr
 
 body section.content section.contacts .contacts__title {
   width: 100%;
-  background-image: url("../img/prices-bgr.jpg");
+  background-image: url("../img/contacts-bgr.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2022,14 +2088,14 @@ body section.content section.contacts .contacts__title .contacts__title-inner {
   line-height: 78px;
 }
 
-body section.content section.contacts .prices__main {
+body section.content section.contacts .contacts__main {
   background-image: url("../img/bgr.jpg");
   background-color: #0f8ac4;
   background-size: 400px 400px;
   background-blend-mode: multiply;
 }
 
-body section.content section.contacts .prices__main .prices__items-inner {
+body section.content section.contacts .contacts__main .contacts__items-inner {
   max-width: 1120px;
   width: 100%;
   margin: 0px auto;

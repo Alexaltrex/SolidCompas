@@ -381,7 +381,6 @@ body {
 
                 .header__contacts {
                     display: flex;
-                    //justify-content: end;
                     font-family: 'icomoon';
                     padding-right: 15px;
 
@@ -1145,7 +1144,7 @@ body {
                     transition: .3s;
 
                     &.active {
-                        height: 195px;
+                        height: 264px;//195px;
                     }
                 }
 
@@ -1541,9 +1540,9 @@ body {
                 width: 100%;
                 background-image: url('../img/prices-bgr.jpg');
                 background-position: center;
-                background-repeat: no-repeat;
                 background-size: cover;
                 background-attachment: fixed;
+                height: 78px;
 
                 .prices__title-inner {
                     max-width: 1120px;
@@ -1574,6 +1573,10 @@ body {
                     box-sizing: border-box;
                     padding: 10px;
 
+                    @include for-phone-only {
+                        padding: 5px;
+                    }
+
                     .prices__items-parts {
                         display: grid;
                         grid-template-columns: repeat(2, 1fr);
@@ -1582,6 +1585,10 @@ body {
                         border: 1px solid #fff;
                         border-radius: 20px;
                         box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.521);
+
+                        @include for-phone-only {
+                            grid-column-gap: 0;
+                        }
 
                         .prices__items-part-left {
                             display: flex;
@@ -1596,9 +1603,17 @@ body {
                                     height: 40px;
                                     font-size: 20px;
                                     margin: 10px 0;
-                                    line-height: 40px;
                                     cursor: pointer;
                                     transition: .2s;
+                                    text-align: right;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: flex-end;
+
+                                    @include for-phone-only {
+                                        font-size: 16px;
+                                        //line-height: normal;
+                                    }
 
                                     &:hover,
                                     &.hover {
@@ -1619,6 +1634,10 @@ body {
                                 position: relative;
                                 width: 40px;
                                 margin-left: 10px;
+
+                                @include for-phone-only {
+                                    margin-left: 5px;
+                                }
 
                                 .circle {
                                     width: 40px;
@@ -1666,6 +1685,10 @@ body {
                                 width: 40px;
                                 margin-right: 10px;
 
+                                @include for-phone-only {
+                                    margin-right: 5px;
+                                }
+
                                 .circle {
                                     width: 40px;
                                     height: 40px;
@@ -1708,9 +1731,16 @@ body {
                                     height: 40px;
                                     font-size: 20px;
                                     margin: 10px 0;
-                                    line-height: 40px;
                                     cursor: pointer;
                                     transition: .2s;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: flex-end;
+
+                                    @include for-phone-only {
+                                        font-size: 16px;
+                                        //line-height: normal;
+                                    }
 
                                     &:hover,
                                     &.hover {
@@ -1730,10 +1760,16 @@ body {
                         color: $tc2;
                         display: flex;
                         justify-content: center;
-                        padding: 20px 0;
+                        padding: 20px 5px;
                         border: 1px solid #fff;
                         border-radius: 20px;
                         box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.521);
+
+                        @include for-phone-only {
+                            flex-direction: column;
+                            align-items: center;
+                            padding: 10px 5px;
+                        }
 
                         .final-price-title {
                             font-size: 20px;
@@ -1754,7 +1790,7 @@ body {
            
             .contacts__title {
                 width: 100%;
-                background-image: url('../img/prices-bgr.jpg');
+                background-image: url('../img/contacts-bgr.jpg');
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -1776,18 +1812,19 @@ body {
 
             }
 
-            .prices__main {
+            .contacts__main {
                 background-image: url('../img/bgr.jpg');
                 background-color: $bgrc3;
                 background-size: 400px 400px;
                 background-blend-mode: multiply;
 
-                .prices__items-inner {
+                .contacts__items-inner {
                     max-width: 1120px;
                     width: 100%;
                     margin: 0px auto;
                     box-sizing: border-box;
                     padding: 10px;
+
                     
                 }
             }
