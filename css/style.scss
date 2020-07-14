@@ -1833,15 +1833,16 @@ body {
 
                     .contacts__contacts-item {
                         text-decoration: none;
-                        padding-left: 15px;
+                        padding-left: 25px;
                         display: flex;
                         align-items: center;
+                        margin: 5px 0;
 
-                        @media (min-width: 900px) {
-                            &:first-child {
-                                margin-right: 35px;
-                            }
-                        }
+                        // @media (min-width: 900px) {
+                        //     &:first-child {
+                        //         margin-right: 35px;
+                        //     }
+                        // }
 
                         .contacts__contacts-item-before {
                             margin-right: 5px;
