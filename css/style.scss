@@ -212,6 +212,17 @@ body {
                 }
             }
 
+            .header__logo2 {
+                @include for-tablet-portrait-and-below {
+                    display: none;
+                }
+
+                img {
+                    max-width: 80px;
+                    border-radius: 10px;
+                }
+            }
+
             .header__links {
                 align-self: stretch;
                 display: flex;
@@ -278,7 +289,7 @@ body {
 
                         .header__menu-item {
                             display: block;
-                            padding: 10px 15px;
+                            padding: 10px 10px;
                             text-decoration: none;
                             font-family: 'Roboto', sans-serif;
                             font-size: 20px;
@@ -1884,8 +1895,8 @@ body {
                         }
 
                         &:nth-child(4) .contacts__contacts-item-before {
-                            width: 26px;
-                            height: 26px;
+                            width: 24px;
+                            height: 24px;
                             background-color: #fff;
                             border-radius: 50%;
                             position: relative;

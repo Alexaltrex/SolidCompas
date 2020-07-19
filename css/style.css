@@ -231,6 +231,17 @@ body header.header .header-container .header__logobox .header__logotitle .header
   position: absolute;
 }
 
+@media (max-width: 899px) {
+  body header.header .header-container .header__logo2 {
+    display: none;
+  }
+}
+
+body header.header .header-container .header__logo2 img {
+  max-width: 80px;
+  border-radius: 10px;
+}
+
 body header.header .header-container .header__links {
   -ms-flex-item-align: stretch;
       align-self: stretch;
@@ -334,7 +345,7 @@ body header.header .header-container .header__links .header__menu .header__menu-
 
 body header.header .header-container .header__links .header__menu .header__menu-inner .header__menu-item {
   display: block;
-  padding: 10px 15px;
+  padding: 10px 10px;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
@@ -2174,8 +2185,8 @@ body section.content section.contacts .contacts__main .contacts__items-inner .co
 }
 
 body section.content section.contacts .contacts__main .contacts__items-inner .contacts__contacts-item:nth-child(4) .contacts__contacts-item-before {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   background-color: #fff;
   border-radius: 50%;
   position: relative;
