@@ -640,64 +640,64 @@ $(function () {
     function Price(i1, i2) {
         let value;
         switch (i1) {
-            case 0: {
+            case 0: {//2D
                 switch (i2) {
                     case 0: {
-                        value = 1100;
+                        value = 600;
                         break;
                     }
                     case 1: {
+                        value = 800;
+                        break;
+                    }
+                    case 2: {
+                        value = 1000;
+                        break;
+                    }
+                    case 3: {
                         value = 1200;
                         break;
                     }
+                }
+                break;
+            }
+            case 1: {//3D
+                switch (i2) {
+                    case 0: {
+                        value = 500;
+                        break;
+                    }
+                    case 1: {
+                        value = 650;
+                        break;
+                    }
                     case 2: {
-                        value = 1300;
+                        value = 800;
                         break;
                     }
                     case 3: {
-                        value = 1400;
+                        value = 1000;
                         break;
                     }
                 }
                 break;
             }
-            case 1: {
+            case 2: {//RENDER
                 switch (i2) {
                     case 0: {
-                        value = 2100;
+                        value = 500;
                         break;
                     }
                     case 1: {
-                        value = 2200;
+                        value = 600;
                         break;
                     }
                     case 2: {
-                        value = 2300;
+                        value = 700;
                         break;
                     }
                     case 3: {
-                        value = 2400;
-                        break;
-                    }
-                }
-                break;
-            }
-            case 2: {
-                switch (i2) {
-                    case 0: {
-                        value = 3100;
-                        break;
-                    }
-                    case 1: {
-                        value = 3200;
-                        break;
-                    }
-                    case 2: {
-                        value = 3300;
-                        break;
-                    }
-                    case 3: {
-                        value = 3400;
+                        value = 800;
                         break;
                     }
                 }
@@ -706,19 +706,19 @@ $(function () {
             case 3: {
                 switch (i2) {
                     case 0: {
-                        value = 4100;
+                        value = 900;
                         break;
                     }
                     case 1: {
-                        value = 4200;
+                        value = 1200;
                         break;
                     }
                     case 2: {
-                        value = 4300;
+                        value = 1500;
                         break;
                     }
                     case 3: {
-                        value = 4400;
+                        value = 1800;
                         break;
                     }
                 }
@@ -727,19 +727,19 @@ $(function () {
             case 4: {
                 switch (i2) {
                     case 0: {
-                        value = 5100;
+                        value = 700;
                         break;
                     }
                     case 1: {
-                        value = 5200;
+                        value = 900;
                         break;
                     }
                     case 2: {
-                        value = 5300;
+                        value = 1200;
                         break;
                     }
                     case 3: {
-                        value = 5400;
+                        value = 1400;
                         break;
                     }
                 }
