@@ -1108,6 +1108,10 @@ body section.content section.services .services__items .services__items-inner .s
   transition: opacity .3s;
 }
 
+body section.content section.services .services__items .services__items-inner .services__item .services__item-img.services__item-img2:hover {
+  cursor: move;
+}
+
 body section.content section.services .services__items .services__items-inner .services__item .services__item-img.services__item-img2 img {
   opacity: 0;
 }
@@ -1324,8 +1328,8 @@ body section.content section.portfolio .portfolio__menu {
 body section.content section.portfolio .portfolio__menu nav.portfolio__menu-inner {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[6];
-      grid-template-columns: repeat(6, auto);
+  -ms-grid-columns: (auto)[7];
+      grid-template-columns: repeat(7, auto);
   width: 100%;
   height: 100%;
 }
@@ -1675,7 +1679,7 @@ body section.content section.portfolio .portfolio__modal {
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 1, 32, 0.9);
+  background-color: rgba(8, 9, 37, 0.9);
   z-index: 5;
   display: -webkit-box;
   display: -ms-flexbox;

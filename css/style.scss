@@ -957,8 +957,12 @@ body {
                             }
 
                             &.services__item-img2 {
+                                &:hover {
+                                    cursor: move;
+                                }
+
                                 img {
-                                    opacity: 0;
+                                    opacity: 0;                                    
                                 }
                             }
 
@@ -1160,7 +1164,7 @@ body {
 
                 nav.portfolio__menu-inner {
                     display: grid;
-                    grid-template-columns: repeat(6, auto);
+                    grid-template-columns: repeat(7, auto);
                     width: 100%;
                     height: 100%;
 
@@ -1362,10 +1366,8 @@ body {
 
                 .portfolio__item {
                     height: 200px;
-                    //max-width: calc(25% - 10px);
                     width: 100%;
                     background-color: red;
-                    //margin: 5px;
                     overflow: hidden;
                     border-radius: 10px;
                     position: absolute;
@@ -1478,7 +1480,7 @@ body {
                 left: -100%;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 1, 32, 0.9);
+                background-color: rgba(8, 9, 37, 0.9);
                 z-index: 5;
                 display: flex;
                 justify-content: center;
@@ -1848,7 +1850,7 @@ body {
                         display: flex;
                         align-items: center;
                         margin: 5px 0;
-                       
+
                         .contacts__contacts-item-before {
                             margin-right: 5px;
 
