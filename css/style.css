@@ -884,6 +884,12 @@ body section.content section.about .about__description .about__description-inner
 
 body section.content section.about .about__description .about__description-inner .about__text a {
   color: #ffb56c;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+body section.content section.about .about__description .about__description-inner .about__text a:hover {
+  color: lime;
 }
 
 body section.content section.about .about__description .about__description-inner .about__achievements {

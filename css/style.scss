@@ -758,6 +758,11 @@ body {
                         a {
                             //text-decoration: none;
                             color: $tc2;
+                            transition: .3s;
+
+                            &:hover{
+                                color: lime;
+                            }
                         }
                     }
 
