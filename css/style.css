@@ -229,6 +229,7 @@ body header.header .header-container .header__logobox .header__logotitle .header
 
 body header.header .header-container .header__logobox .header__logotitle .header__logotitle-block.block2 {
   position: absolute;
+  color: #ffb56c;
 }
 
 @media (max-width: 1019px) {
@@ -1298,6 +1299,12 @@ body section.content section.portfolio .portfolio__title .portfolio__title-text 
   font-size: 24px;
   font-weight: 400;
   color: #a55200;
+}
+
+@media (max-width: 599px) {
+  body section.content section.portfolio .portfolio__title .portfolio__title-text span:last-child {
+    display: none;
+  }
 }
 
 body section.content section.portfolio .portfolio__menu {

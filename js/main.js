@@ -132,7 +132,6 @@ $(function () {
     let menuItems = $('.portfolio__menu-item');
     let portfolioItems = $('.portfolio__items');
     let Items0 = $('.portfolio__item');
-
     portfolioItems.css('height', `${Math.ceil(Items0.length / 4) * 210}px`);
 
     menuItems.on('click', function () {
@@ -144,11 +143,11 @@ $(function () {
         }
 
         let i = menuItems.index($(this)); // номер НОВОЙ категории
-
+       
         // изменение надписи после ПОРТФОЛИО
         let categoryTextArr = ['', '...уличные зонты', '...складское оборудование', 
         '...оборудование для уличной торговли', '...рендеринг и визуализация', 
-        '...параметризация'];
+        '...параметризация', '...двухмерное проектирование'];
         $('.portfolio__title-text span:last-child').text(categoryTextArr[i]);
 
         // если кликнули не по активному

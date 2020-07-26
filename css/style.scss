@@ -207,6 +207,7 @@ body {
 
                         &.block2 {
                             position: absolute;
+                            color: $tc2;
                         }
                     }
                 }
@@ -1135,6 +1136,10 @@ body {
                         font-size: 24px;
                         font-weight: 400;
                         color: $tc3;
+
+                        @include for-phone-only {
+                            display: none;
+                        }
                     }
                 }
 
