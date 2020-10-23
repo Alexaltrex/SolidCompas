@@ -35,9 +35,10 @@
 <img src="img/git/04.jpg" width="600">
 7. Блок 'Контакты'.
 <div style="display: flex>
-  <img src="img/git/05.jpg" height="200" style="margin-right: 10px">
-  <img src="img/git/06.jpg" height="200" style="margin-right: 10px">
-  <img src="img/git/07.jpg" height="200" style="margin-right: 10px">
-  <img src="img/git/08.jpg" height="200" style="margin-right: 10px">
+  <img src="img/git/05.jpg" height="300" style="margin-right: 10px">
+  <img src="img/git/06.jpg" height="300" style="margin-right: 10px">
+  <img src="img/git/07.jpg" height="300" style="margin-right: 10px">
+  <img src="img/git/08.jpg" height="300" style="margin-right: 10px">
+  <img src="img/git/09.jpg" height="300" style="margin-right: 10px">
 </div> 
 
