@@ -34,7 +34,10 @@
 6. Блок 'Заказать': Анимированный калькулятор расчета стоимости.
 <img src="img/git/04.jpg" width="600">
 7. Блок 'Контакты'.
-<img src="img/git/05.jpg" height="100" style="display: inline-block">
-<img src="img/git/06.jpg" height="100" style="display: inline-block">
-<img src="img/git/07.jpg" height="100" style="display: inline-block">
-<img src="img/git/08.jpg" height="100" style="display: inline-block">
+<div style="display: flex>
+  <img src="img/git/05.jpg" height="100" style="display: inline-block">
+  <img src="img/git/06.jpg" height="100" style="display: inline-block">
+  <img src="img/git/07.jpg" height="100" style="display: inline-block">
+  <img src="img/git/08.jpg" height="100" style="display: inline-block">
+  </div> 
+
